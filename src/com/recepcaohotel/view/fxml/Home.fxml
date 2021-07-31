@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:controller="com.recepcaohotel.controller.HomeController" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/home.css" styleClass="wrapper-container">
+  <StackPane AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0">
+    <VBox alignment="center" fillWidth="false" maxWidth="770" maxHeight="200" spacing="36" styleClass="main-container">
+      <Label text="Bem Vindo(a) ao Hotel!" styleClass="main-title" />
+      <HBox alignment="center" spacing="85">
+        <Button fx:id="botaoNovaReserva" text="Nova Reserva" onAction="#novaReserva" styleClass="main-button" />
+        <Button fx:id="botaoFazerCheckout" text="Fazer Checkout" onAction="#fazerCheckout" styleClass="main-button" />
+      </HBox>
+    </VBox>
+  </StackPane>
+  <Button fx:id="botaoLogarAdmin" text="Administrador" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="55" onAction="#logarAdmin" styleClass="admin-button" />
+</AnchorPane>

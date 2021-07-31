@@ -1,0 +1,40 @@
+.wrapper-container {
+  -fx-background-image: url("../../res/image_1.jpg");
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: cover;
+  -fx-background-position: center;
+}
+
+.main-container {
+  -fx-background-color: rgba(30, 7, 61, 0.85);
+  /* -fx-border-radius: 20px; */
+  -fx-background-radius: 20px;
+}
+
+.main-button,
+.admin-button {
+  /* -fx-border-radius: 8px; */
+  -fx-pref-width: 300px;
+  -fx-pref-height: 60px;
+  -fx-background-radius: 8px;
+  -fx-text-fill: #fff;
+  -fx-font-size: 24px;
+}
+
+.main-button {
+  -fx-background-color: #7a2ab8;
+}
+
+.admin-button {
+  -fx-background-color: #76193a;
+}
+
+.main-button:hover,
+.admin-button:hover {
+  -fx-opacity: 0.9;
+}
+
+.main-title {
+  -fx-text-fill: #fff;
+  -fx-font-size: 48px;
+}
