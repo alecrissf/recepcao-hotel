@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane fx:controller="com.recepcaohotel.controller.CheckoutFinishController" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/checkout.css" styleClass="wrapper-container">
+  <VBox alignment="center" fillWidth="false" spacing="40" styleClass="main-container-finished">
+    <Label text="Checkout Concluído!" styleClass="main-title" />
+    <Button fx:id="botaoVoltar" text="Voltar" onAction="#voltar" styleClass="back-button" />
+  </VBox>
+</StackPane>

@@ -1,6 +1,11 @@
 package com.recepcaohotel.controller;
 
+import java.io.IOException;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 
 public class HomeController {
@@ -21,9 +26,15 @@ public class HomeController {
     }
 
     @FXML
-    private void fazerCheckout() {
-        // TODO: fazer a lógica de trocar de página.
-        System.out.println("Fazer Checkout");
+    private void fazerCheckout(ActionEvent event) {
+        if (event.getSource() == botaoFazerCheckout) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("../view/fxml/Checkout.fxml"));
+                botaoFazerCheckout.getScene().setRoot(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML
