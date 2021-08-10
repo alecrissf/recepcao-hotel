@@ -10,6 +10,11 @@
   -fx-text-fill: #fff;
 }
 
+.text-code {
+  -fx-text-fill: #8f8f8f;
+  -fx-font-weight: bold;
+}
+
 .pricing-text {
   -fx-text-fill: #19a327;
   -fx-font-weight: bold;

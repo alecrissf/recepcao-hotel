@@ -1,0 +1,156 @@
+/* Background Styles */
+.wrapper-container {
+  -fx-background-image: url("../../res/image_3.jfif");
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: cover;
+  -fx-background-position: center;
+}
+
+/* Text styles */
+.text-confirm {
+  -fx-font-style: normal;
+  -fx-font-weight: bold;
+  -fx-font-size: 36px;
+  -fx-text-fill: #fff;
+}
+
+.edit-section-title {
+  -fx-font-weight: bold;
+  -fx-font-size: 36px;
+  -fx-text-fill: #fff;
+}
+
+.section-text {
+  -fx-font-weight: bold;
+  -fx-font-size: 20px;
+  -fx-text-fill: #fff;
+}
+
+/* .text {
+  -fx-font-style: normal;
+  -fx-font-weight: bold;
+  -fx-font-size: 36px;
+  -fx-text-fill: #fff;
+} */
+
+/* Header styles */
+.header {
+  -fx-pref-width: 755px;
+  -fx-pref-height: 89px;
+  -fx-max-width: 755px;
+  -fx-max-height: 89px;
+  -fx-background-color: rgba(30, 7, 61, 0.85);
+}
+
+.header-title {
+  -fx-text-fill: #fff;
+  -fx-font-size: 50px;
+}
+
+/* Container Styles */
+.main-container {
+  -fx-background-radius: 20px;
+  -fx-background-color: rgba(30, 7, 61, 0.85);
+  -fx-padding: 20px;
+}
+
+.main-container.login {
+  -fx-max-width: 330px;
+  -fx-max-height: 303px;
+}
+
+.main-container.painel-controle {
+  -fx-max-width: 330px;
+  -fx-max-height: 185px;
+}
+
+.main-container.confirmation {
+  -fx-max-width: 853px;
+  -fx-max-height: 225px;
+}
+
+.main-container.novo-quarto {
+  -fx-max-width: 670px;
+  -fx-max-height: 239px;
+}
+
+.main-container.edit-registration {
+  -fx-max-width: 1170px;
+  -fx-max-height: 387px;
+}
+
+/* Button Styles */
+.base-button {
+  -fx-pref-width: 300px;
+  -fx-pref-height: 60px;
+  -fx-background-radius: 8px;
+  -fx-text-fill: #fff;
+  -fx-font-size: 24px;
+}
+
+.base-button:hover {
+  -fx-opacity: 0.9;
+}
+
+.base-button.purple-button {
+  -fx-background-color: #7a2ab8;
+}
+
+.base-button.red-button {
+  -fx-background-color: #76193a;
+}
+
+.base-button.gray-button {
+  -fx-background-color: #414141;
+}
+
+/* Text Field Styles */
+.text-field {
+  -fx-pref-width: 300px;
+  -fx-pref-height: 60px;
+  -fx-background-color: #c6c9e9;
+  -fx-background-radius: 10px;
+  -fx-border-radius: 10px;
+  -fx-font-size: 18px;
+}
+
+.text-field-label {
+  -fx-text-fill: #fff;
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+}
+
+/* Scroll Container */
+.scroll-container {
+  -fx-background-color: transparent;
+  -fx-font-size: 30px;
+}
+
+.scroll-container .viewport {
+  -fx-background-color: transparent;
+}
+
+.scroll-container .scroll-bar:vertical {
+  -fx-background-color: transparent;
+}
+
+.scroll-container .increment-button,
+.scroll-container .decrement-button {
+  -fx-background-color: #7a2ab8;
+  -fx-padding: 12px 8px;
+  -fx-background-radius: 8px;
+}
+
+.scroll-container .increment-arrow,
+.scroll-container .decrement-arrow {
+  -fx-background-color: #fff;
+}
+
+.scroll-container .scroll-bar:vertical .track {
+  -fx-background-color: transparent;
+}
+
+.scroll-container .scroll-bar:vertical .thumb {
+  -fx-background-color: #7a2ab8;
+  -fx-background-radius: 8px;
+}

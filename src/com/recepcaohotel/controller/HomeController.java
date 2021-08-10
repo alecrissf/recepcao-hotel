@@ -44,9 +44,15 @@ public class HomeController {
     }
 
     @FXML
-    private void logarAdmin() {
-        // TODO: fazer a lógica de trocar de página.
-        System.out.println("Logar Admin");
+    private void logarAdmin(ActionEvent event) {
+        if (event.getSource() == botaoLogarAdmin) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("../view/fxml/LoginAdmin.fxml"));
+                botaoLogarAdmin.getScene().setRoot(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }

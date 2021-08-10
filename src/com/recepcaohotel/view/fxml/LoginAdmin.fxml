@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:controller="com.recepcaohotel.controller.LoginAdminController" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/admin-styles.css" styleClass="wrapper-container">
+  <StackPane AnchorPane.topAnchor="28" styleClass="header">
+    <Label alignment="center" text="Login Administrador" styleClass="header-title" />
+  </StackPane>
+  <StackPane alignment="center" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+    <VBox fillWidth="never" alignment="center" spacing="10" styleClass="main-container, login">
+      <VBox>
+        <Label text="Usuário" styleClass="text-field-label" />
+        <TextField fx:id="campoUsuario" styleClass="text-field" />
+      </VBox>
+      <VBox>
+        <Label text="Senha" styleClass="text-field-label" />
+        <PasswordField fx:id="campoSenha" styleClass="text-field" />
+      </VBox>
+      <Button fx:id="botaoEntrar" onAction="#entrar" text="Entrar" styleClass="base-button, purple-button" />
+    </VBox>
+  </StackPane>
+  <Button fx:id="botaoVoltar" onAction="#voltar" text="Voltar" styleClass="base-button, red-button" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="55" />
+</AnchorPane>

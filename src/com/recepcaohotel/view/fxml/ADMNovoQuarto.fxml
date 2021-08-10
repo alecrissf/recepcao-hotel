@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:controller="com.recepcaohotel.controller.ADMNovoQuartoController" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/admin-styles.css" styleClass="wrapper-container">
+  <StackPane AnchorPane.topAnchor="28" styleClass="header">
+    <Label alignment="center" text="Novo Quarto" styleClass="header-title" />
+  </StackPane>
+  <StackPane alignment="center" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+    <VBox fillWidth="never" alignment="center" spacing="10" styleClass="main-container, novo-quarto">
+      <HBox alignment="center" spacing="20">
+        <VBox alignment="center" spacing="5">
+          <VBox alignment="center">
+            <Label text="Número do Quarto" styleClass="text-field-label" />
+            <TextField fx:id="campoNumQuarto" styleClass="text-field" />
+          </VBox>
+          <VBox alignment="center">
+            <Label text="Valor Diária" styleClass="text-field-label" />
+            <TextField fx:id="campoValorDiaria" styleClass="text-field" />
+          </VBox>
+        </VBox>
+        <VBox alignment="center" spacing="5">
+          <VBox alignment="center">
+            <Label text="Quantidade de Camas de Casal" styleClass="text-field-label" />
+            <TextField fx:id="campoQtdCamasCasal" styleClass="text-field" />
+          </VBox>
+          <VBox alignment="center">
+            <Label text="Quantidade de Camas de Solteiro" styleClass="text-field-label" />
+            <TextField fx:id="campoQtdCamasSolteiro" styleClass="text-field" />
+          </VBox>
+        </VBox>
+      </HBox>
+    </VBox>
+  </StackPane>
+  <HBox alignment="center" spacing="20" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="55" AnchorPane.leftAnchor="55">
+    <Button fx:id="botaoConfirmar" onAction="#confirmar" text="Confirmar" styleClass="base-button, purple-button" />
+    <Button fx:id="botaoCancelar" onAction="#cancelar" text="Cancelar" styleClass="base-button, red-button" />
+  </HBox>
+</AnchorPane>

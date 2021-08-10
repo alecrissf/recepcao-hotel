@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox fx:controller="com.recepcaohotel.controller.ADMItemQuartoController" prefWidth="100.0" alignment="center_left" spacing="10" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/item-quarto.css" styleClass="quarto-wrapper-container">
+  <VBox alignment="center_left" HBox.hgrow="never">
+    <Label fx:id="numeroQuarto" text="Quarto 001" styleClass="text" />
+    <Label fx:id="numeroCamasDeCasal" text="Camas de Casal: 1" styleClass="text" />
+    <Label fx:id="numeroCamasDeSolteiro" text="Camas de Solteiro: 1" styleClass="text" />
+  </VBox>
+  <VBox alignment="center" HBox.hgrow="always">
+    <Label text="Diária" styleClass="pricing-text" />
+    <Label fx:id="precoEstadia" text="R$120,00" styleClass="pricing-text" />
+  </VBox>
+  <Label fx:id="textoDisponibilidade" text="Disponivel" alignment="center" styleClass="availability-pane, text" />
+  <Button fx:id="botaoEditar" onAction="#editar" text="Editar" styleClass="base-button, orange-button" />
+  <Button fx:id="botaoRemover" onAction="#remover" text="Remover" styleClass="base-button, red-button" />
+</HBox>

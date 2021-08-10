@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:controller="com.recepcaohotel.controller.ADMListaQuartosController" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/admin-styles.css" styleClass="wrapper-container">
+  <StackPane AnchorPane.topAnchor="28" styleClass="header">
+    <Label alignment="center" text="Quartos Cadastrados" styleClass="header-title" />
+  </StackPane>
+  <ScrollPane fitToWidth="true" hbarPolicy="never" AnchorPane.topAnchor="140" AnchorPane.bottomAnchor="100" AnchorPane.leftAnchor="55" AnchorPane.rightAnchor="55" styleClass="scroll-container">
+    <VBox fx:id="containerLista" spacing="20" prefWidth="100.0">
+      <fx:include source="ADMItemQuarto.fxml" />
+    </VBox>
+  </ScrollPane>
+  <HBox alignment="center" spacing="20" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="55" AnchorPane.leftAnchor="55">
+    <Button fx:id="botaoAtualizar" onAction="#atualizar" text="Atualizar" styleClass="base-button, gray-button" />
+    <Button fx:id="botaoAdicionarQuarto" onAction="#adicionarQuarto" text="Adicionar Quarto" styleClass="base-button, purple-button" />
+    <Button fx:id="botaoVoltar" onAction="#voltar" text="Voltar" styleClass="base-button, red-button" />
+  </HBox>
+</AnchorPane>

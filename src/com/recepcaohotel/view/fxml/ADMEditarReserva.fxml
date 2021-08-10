@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:controller="com.recepcaohotel.controller.ADMEditarReservaController" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/admin-styles.css" styleClass="wrapper-container">
+  <StackPane AnchorPane.topAnchor="28" styleClass="header">
+    <Label alignment="center" text="Editar Reserva" styleClass="header-title" />
+  </StackPane>
+  <StackPane alignment="center" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+    <VBox fillWidth="never" alignment="center" spacing="10" styleClass="main-container, edit-registration">
+      <HBox alignment="center" spacing="20">
+        <VBox alignment="top_center" spacing="5">
+          <Label text="Atualizar Data" styleClass="edit-section-title" />
+          <Label text="de Saída" styleClass="edit-section-title" />
+          <Label text="Data de Saída atual:" styleClass="section-text" />
+          <Label fx:id="texoDataSaida" text="07/07/2021" styleClass="section-text" />
+          <VBox alignment="center">
+            <Label text="Nova Data de Saída" styleClass="text-field-label" />
+            <DatePicker fx:id="campoDataSaida" styleClass="text-field" />
+          </VBox>
+        </VBox>
+        <VBox alignment="top_center" spacing="5">
+          <Label text="Valor Serviço" styleClass="edit-section-title" />
+          <Label text="de Quarto" styleClass="edit-section-title" />
+          <VBox alignment="center">
+            <Label text="Quantidade" styleClass="text-field-label" />
+            <TextField fx:id="campoQtdServicoQuarto" styleClass="text-field" />
+          </VBox>
+          <VBox alignment="center">
+            <Label text="Valor do Serviço" styleClass="text-field-label" />
+            <TextField fx:id="campoValorServicoQuarto" styleClass="text-field" />
+          </VBox>
+        </VBox>
+        <VBox alignment="top_center" spacing="5">
+          <Label text="Valor Consumo" styleClass="edit-section-title" />
+          <Label text="Frigobar" styleClass="edit-section-title" />
+          <VBox alignment="center">
+            <Label text="Quantidade" styleClass="text-field-label" />
+            <TextField fx:id="campoQtdConsumoFrigobar" styleClass="text-field" />
+          </VBox>
+          <VBox alignment="center">
+            <Label text="Valor do Serviço" styleClass="text-field-label" />
+            <TextField fx:id="campoValorConsumoFrigobar" styleClass="text-field" />
+          </VBox>
+        </VBox>
+      </HBox>
+    </VBox>
+  </StackPane>
+  <HBox alignment="center" spacing="20" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="55" AnchorPane.leftAnchor="55">
+    <Button fx:id="botaoConfirmar" onAction="#confirmar" text="Confirmar" styleClass="base-button, purple-button" />
+    <Button fx:id="botaoCancelar" onAction="#cancelar" text="Cancelar" styleClass="base-button, red-button" />
+  </HBox>
+</AnchorPane>
