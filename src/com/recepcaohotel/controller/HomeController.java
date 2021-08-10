@@ -20,9 +20,15 @@ public class HomeController {
     private Button botaoLogarAdmin;
 
     @FXML
-    private void novaReserva() {
-        // TODO: fazer a lógica de trocar de página.
-        System.out.println("Nova Reserva");
+    private void novaReserva(ActionEvent event) {
+        if (event.getSource() == botaoNovaReserva) {
+            try {
+                Parent root = FXMLLoader.load(getClass().getResource("../view/fxml/Estadia.fxml"));
+                botaoNovaReserva.getScene().setRoot(root);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @FXML

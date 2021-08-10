@@ -1,0 +1,76 @@
+.wrapper-container {
+  -fx-background-image: url("../../res/image_2.jfif");
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: cover;
+  -fx-background-position: center;
+}
+
+.header {
+  -fx-pref-width: 755px;
+  -fx-pref-height: 89px;
+  -fx-max-width: 755px;
+  -fx-max-height: 89px;
+  -fx-background-color: rgba(30, 7, 61, 0.85);
+}
+
+.header-title {
+  -fx-text-fill: #fff;
+  -fx-font-size: 50px;
+}
+
+.main-container {
+  -fx-pref-width: 1067px;
+  -fx-pref-height: 287px;
+  -fx-max-width: 1067px;
+  -fx-max-height: 287px;
+  -fx-background-radius: 20px;
+  -fx-background-color: rgba(30, 7, 61, 0.85);
+}
+
+.back-button {
+  /* -fx-border-radius: 8px; */
+  -fx-pref-width: 300px;
+  -fx-pref-height: 60px;
+  -fx-background-radius: 8px;
+  -fx-text-fill: #fff;
+  -fx-font-size: 24px;
+  -fx-background-color: #76193a;
+}
+
+.back-button:hover {
+  -fx-opacity: 0.9;
+}
+
+.room-scroll-container {
+  -fx-background-color: transparent;
+  -fx-font-size: 30px;
+}
+
+.room-scroll-container .viewport {
+  -fx-background-color: transparent;
+}
+
+.room-scroll-container .scroll-bar:vertical {
+  -fx-background-color: transparent;
+}
+
+.room-scroll-container .increment-button,
+.room-scroll-container .decrement-button {
+  -fx-background-color: #7a2ab8;
+  -fx-padding: 12px 8px;
+  -fx-background-radius: 8px;
+}
+
+.room-scroll-container .increment-arrow,
+.room-scroll-container .decrement-arrow {
+  -fx-background-color: #fff;
+}
+
+.room-scroll-container .scroll-bar:vertical .track {
+  -fx-background-color: transparent;
+}
+
+.room-scroll-container .scroll-bar:vertical .thumb {
+  -fx-background-color: #7a2ab8;
+  -fx-background-radius: 8px;
+}

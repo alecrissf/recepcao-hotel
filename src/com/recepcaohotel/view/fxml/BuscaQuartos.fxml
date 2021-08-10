@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:controller="com.recepcaohotel.controller.BuscaQuartosController" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/busca-quartos.css" styleClass="wrapper-container">
+  <StackPane AnchorPane.topAnchor="28" styleClass="header">
+    <Label alignment="center" text="Estadia" styleClass="header-title" />
+  </StackPane>
+  <ScrollPane fitToWidth="true" hbarPolicy="never" AnchorPane.topAnchor="140" AnchorPane.bottomAnchor="100" AnchorPane.leftAnchor="55" AnchorPane.rightAnchor="55" styleClass="room-scroll-container">
+    <VBox fx:id="containerQuartos" spacing="20" prefWidth="100.0">
+      <fx:include source="ItemQuarto.fxml" />
+    </VBox>
+  </ScrollPane>
+  <!-- <StackPane AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0"></StackPane> -->
+  <Button fx:id="botaoVoltar" text="Voltar" onAction="#voltar" styleClass="back-button" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="55" />
+</AnchorPane>
