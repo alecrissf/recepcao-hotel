@@ -7,18 +7,18 @@
 <?import javafx.scene.text.*?>
 
 <HBox fx:controller="com.recepcaohotel.controller.ItemQuartoController" prefWidth="100.0" alignment="center_left" spacing="10" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/item-quarto.css" styleClass="quarto-wrapper-container">
-  <VBox alignment="center_left" HBox.hgrow="always" styleClass="info-container, room-info-container">
+  <VBox alignment="center_left" HBox.hgrow="always">
     <Label fx:id="numeroQuarto" text="Quarto 001" styleClass="text" />
     <Label fx:id="numeroCamasDeCasal" text="Camas de Casal: 1" styleClass="text" />
     <Label fx:id="numeroCamasDeSolteiro" text="Camas de Solteiro: 1" styleClass="text" />
   </VBox>
-  <VBox alignment="center_left" HBox.hgrow="always" styleClass="info-container, date-info-container">
+  <VBox alignment="center_left" HBox.hgrow="always">
     <Label fx:id="dataEntrada" text="Entrada: 07/07/2021" styleClass="text" />
     <Label fx:id="dataSaida" text="Saída: 09/07/2021" styleClass="text" />
   </VBox>
-  <VBox alignment="center" HBox.hgrow="always" styleClass="info-container, pricing-info-container">
+  <VBox alignment="center" HBox.hgrow="always">
     <Label text="Diária" styleClass="pricing-text" />
     <Label fx:id="precoEstadia" text="R$120,00" styleClass="pricing-text" />
   </VBox>
-  <Button fx:id="botaoReservar" onAction="#reservar" text="Reservar" styleClass="reserve-button" />
+  <Button fx:id="botaoReservar" onAction="#reservar" text="Reservar" styleClass="base-button, purple-button" />
 </HBox>
