@@ -1,0 +1,58 @@
+.wrapper-container {
+  -fx-background-image: url("../../res/image_2.jfif");
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: cover;
+  -fx-background-position: center;
+}
+
+.main-container,
+.main-container-finished {
+  -fx-pref-width: 671px;
+  -fx-pref-height: 318px;
+  -fx-max-width: 671px;
+  -fx-max-height: 318px;
+  -fx-background-radius: 20px;
+  -fx-background-color: rgba(30, 7, 61, 0.85);
+}
+
+.main-container-finished {
+  -fx-pref-height: 264px;
+  -fx-max-height: 264px;
+}
+
+.confirm-button,
+.back-button {
+  /* -fx-border-radius: 8px; */
+  -fx-pref-width: 300px;
+  -fx-pref-height: 60px;
+  -fx-background-radius: 8px;
+  -fx-text-fill: #fff;
+  -fx-font-size: 24px;
+}
+
+.confirm-button {
+  -fx-background-color: #7a2ab8;
+}
+
+.back-button {
+  -fx-background-color: #76193a;
+}
+
+.confirm-button:hover,
+.back-button:hover {
+  -fx-opacity: 0.9;
+}
+
+.main-title {
+  -fx-text-fill: #fff;
+  -fx-font-size: 48px;
+  -fx-font-weight: bold;
+}
+
+.reservation-code-text-field {
+  -fx-pref-width: 300px;
+  -fx-pref-height: 60px;
+  -fx-background-color: #c6c9e9;
+  -fx-background-radius: 10px;
+  -fx-font-size: 18px;
+}

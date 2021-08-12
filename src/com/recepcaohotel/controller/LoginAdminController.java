@@ -7,27 +7,30 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
-public class CheckoutController {
+public class LoginAdminController {
     @FXML
-    private TextField campoCodigoReserva;
+    private TextField campoUsuario;
 
     @FXML
-    private Button botaoConfirmarCheckout;
+    private PasswordField campoSenha;
+
+    @FXML
+    private Button botaoEntrar;
 
     @FXML
     private Button botaoVoltar;
 
     @FXML
-    private void confirmarCheckout(ActionEvent event) {
-        // TODO: fazer a lógica de fazer checkout.
-        System.out.println("Código digitado: " + campoCodigoReserva.getText());
+    private void entrar(ActionEvent event) {
+        // TODO: guardar informações necessárias no contexto do admin.
 
-        if (event.getSource() == botaoConfirmarCheckout) {
+        if (event.getSource() == botaoEntrar) {
             try {
-                Parent root = FXMLLoader.load(getClass().getResource("../view/fxml/CheckoutFinish.fxml"));
-                botaoConfirmarCheckout.getScene().setRoot(root);
+                Parent root = FXMLLoader.load(getClass().getResource("../view/fxml/PainelControle.fxml"));
+                botaoEntrar.getScene().setRoot(root);
             } catch (IOException e) {
                 e.printStackTrace();
             }

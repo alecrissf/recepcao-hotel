@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:controller="com.recepcaohotel.controller.PainelControleController" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/admin-styles.css" styleClass="wrapper-container">
+  <StackPane AnchorPane.topAnchor="28" styleClass="header">
+    <Label alignment="center" text="Painel de Controle" styleClass="header-title" />
+  </StackPane>
+  <StackPane alignment="center" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
+    <VBox fillWidth="never" alignment="center" spacing="10" styleClass="main-container, painel-controle">
+      <Button fx:id="botaoListarQuartos" onAction="#listarQuartos" text="Listar Quartos" styleClass="base-button, purple-button" />
+      <Button fx:id="botaoListarReservas" onAction="#listarReservas" text="Listar Reservas" styleClass="base-button, purple-button" />
+    </VBox>
+  </StackPane>
+  <Button fx:id="botaoVoltar" onAction="#voltar" text="Sair" styleClass="base-button, red-button" AnchorPane.bottomAnchor="20" AnchorPane.rightAnchor="55" />
+</AnchorPane>

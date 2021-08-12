@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<HBox fx:controller="com.recepcaohotel.controller.ADMItemReservaController" prefWidth="100.0" alignment="center_left" spacing="10" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/item-reserva.css" styleClass="quarto-wrapper-container">
+  <VBox alignment="center_left" HBox.hgrow="never">
+    <Label text="Reserva" styleClass="text" />
+    <Label fx:id="codigoReserva" text="#13OAP002" styleClass="text-code" />
+  </VBox>
+  <VBox alignment="center" HBox.hgrow="always">
+    <Label text="Total a Pagar" styleClass="pricing-text" />
+    <Label fx:id="precoTotal" text="R$120,00" styleClass="pricing-text" />
+  </VBox>
+  <VBox alignment="center" spacing="20">
+    <Label fx:id="textoEmProgresso" text="Em Progresso" alignment="center" styleClass="availability-pane" />
+    <Label fx:id="textoCancelado" text="Não Cancelada" alignment="center" styleClass="availability-pane" />
+  </VBox>
+  <Button fx:id="botaoEditar" onAction="#editar" text="Editar" styleClass="base-button, orange-button" />
+  <Button fx:id="botaoCancelar" onAction="#cancelar" text="Cancelar" styleClass="base-button, red-button" />
+</HBox>

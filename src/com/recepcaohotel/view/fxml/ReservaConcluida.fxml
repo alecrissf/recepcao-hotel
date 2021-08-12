@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane fx:controller="com.recepcaohotel.controller.ReservaConcluidaController" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/reserva-concluida.css" styleClass="wrapper-container">
+  <VBox alignment="center" fillWidth="false" spacing="40" styleClass="main-container">
+    <Label text="Reserva Concluída!" styleClass="main-title" />
+    <HBox alignment="center" spacing="20">
+      <Label text="O código da sua reserva é:" styleClass="text" />
+      <Label fx:id="reservationCode" text="#13OAP002" styleClass="text, code-text" />
+    </HBox>
+    <Button fx:id="botaoVoltar" text="Voltar" onAction="#voltar" styleClass="back-button" />
+  </VBox>
+</StackPane>

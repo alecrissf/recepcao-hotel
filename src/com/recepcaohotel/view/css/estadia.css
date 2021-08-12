@@ -1,0 +1,71 @@
+.wrapper-container {
+  -fx-background-image: url("../../res/image_2.jfif");
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: cover;
+  -fx-background-position: center;
+}
+
+.header {
+  -fx-pref-width: 755px;
+  -fx-pref-height: 89px;
+  -fx-max-width: 755px;
+  -fx-max-height: 89px;
+  -fx-background-color: rgba(30, 7, 61, 0.85);
+}
+
+.header-title {
+  -fx-text-fill: #fff;
+  -fx-font-size: 50px;
+}
+
+.main-container {
+  -fx-pref-width: 1067px;
+  -fx-pref-height: 287px;
+  -fx-max-width: 1067px;
+  -fx-max-height: 287px;
+  -fx-background-radius: 20px;
+  -fx-background-color: rgba(30, 7, 61, 0.85);
+}
+
+.search-rooms-button,
+.back-button {
+  /* -fx-border-radius: 8px; */
+  -fx-pref-width: 300px;
+  -fx-pref-height: 60px;
+  -fx-background-radius: 8px;
+  -fx-text-fill: #fff;
+  -fx-font-size: 24px;
+}
+
+.search-rooms-button {
+  -fx-background-color: #7a2ab8;
+}
+
+.back-button {
+  -fx-background-color: #76193a;
+}
+
+.search-rooms-button:hover,
+.back-button:hover {
+  -fx-opacity: 0.9;
+}
+
+.main-title {
+  -fx-text-fill: #fff;
+  -fx-font-size: 42px;
+  -fx-font-weight: bold;
+}
+
+.date-picker-label {
+  -fx-text-fill: #fff;
+  -fx-font-size: 24px;
+}
+
+.date-picker {
+  -fx-pref-width: 300px;
+  -fx-pref-height: 60px;
+  -fx-background-color: #c6c9e9;
+  -fx-background-radius: 10px;
+  -fx-border-radius: 10px;
+  -fx-font-size: 18px;
+}

@@ -1,0 +1,56 @@
+.quarto-wrapper-container {
+  -fx-pref-height: 170px;
+  /* -fx-pref-width: 1050px; */
+  -fx-background-radius: 20px;
+  -fx-background-color: rgba(30, 7, 61, 0.85);
+  -fx-padding: 20px;
+}
+
+.text {
+  -fx-text-fill: #fff;
+}
+
+.pricing-text {
+  -fx-text-fill: #19a327;
+  -fx-font-weight: bold;
+}
+
+.base-button {
+  -fx-pref-width: 142px;
+  -fx-pref-height: 130px;
+  -fx-background-radius: 40px;
+  -fx-text-fill: #fff;
+  -fx-font-size: 28px;
+  -fx-padding: 10px;
+}
+
+.base-button:hover {
+  -fx-opacity: 0.9;
+}
+
+.base-button.red-button {
+  -fx-background-color: #76193a;
+}
+
+.base-button.orange-button {
+  -fx-background-color: #bd4444;
+}
+
+.base-button.purple-button {
+  -fx-background-color: #7a2ab8;
+}
+
+.availability-pane {
+  -fx-pref-width: 190px;
+  -fx-pref-height: 48px;
+  -fx-max-width: 190px;
+  -fx-max-height: 48px;
+  -fx-background-radius: 24px;
+  -fx-background-color: #44bda7;
+  -fx-text-fill: #000;
+  -fx-font-size: 20px;
+}
+
+.availability-pane.unavailable {
+  -fx-background-color: #bd4444;
+}

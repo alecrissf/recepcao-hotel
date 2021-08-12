@@ -6,5 +6,13 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<!-- TODO: -->
-<StackPane fx:controller="com.recepcaohotel.controller.CheckoutController" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/checkout.css" styleClass="wrapper-container"></StackPane>
+<StackPane fx:controller="com.recepcaohotel.controller.CheckoutController" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/checkout.css" styleClass="wrapper-container">
+  <VBox alignment="center" fillWidth="false" spacing="40" styleClass="main-container">
+    <Label text="Digite o Código da Reserva" styleClass="main-title" />
+    <TextField fx:id="campoCodigoReserva" styleClass="reservation-code-text-field" />
+    <HBox alignment="center" spacing="20">
+      <Button fx:id="botaoConfirmarCheckout" text="Fazer Checkout" onAction="#confirmarCheckout" styleClass="confirm-button" />
+      <Button fx:id="botaoVoltar" text="Voltar" onAction="#voltar" styleClass="back-button" />
+    </HBox>
+  </VBox>
+</StackPane>

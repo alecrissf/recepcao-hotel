@@ -1,0 +1,80 @@
+.wrapper-container {
+  -fx-background-image: url("../../res/image_2.jfif");
+  -fx-background-repeat: no-repeat;
+  -fx-background-size: cover;
+  -fx-background-position: center;
+}
+
+.header {
+  -fx-pref-width: 755px;
+  -fx-pref-height: 89px;
+  -fx-max-width: 755px;
+  -fx-max-height: 89px;
+  -fx-background-color: rgba(30, 7, 61, 0.85);
+}
+
+.header-title {
+  -fx-text-fill: #fff;
+  -fx-font-size: 50px;
+}
+
+.main-container {
+  -fx-pref-width: 1009px;
+  -fx-pref-height: 407px;
+  -fx-max-width: 1009px;
+  -fx-max-height: 407px;
+  -fx-background-radius: 20px;
+  -fx-background-color: rgba(30, 7, 61, 0.85);
+  -fx-padding: 20px;
+}
+
+.base-button {
+  -fx-pref-width: 300px;
+  -fx-pref-height: 60px;
+  -fx-background-radius: 8px;
+  -fx-text-fill: #fff;
+  -fx-font-size: 24px;
+}
+
+.base-button:hover {
+  -fx-opacity: 0.9;
+}
+
+.confirmar-reserva-button {
+  -fx-background-color: #7a2ab8;
+}
+
+.back-button {
+  -fx-background-color: #76193a;
+}
+
+.room-info-text {
+  -fx-text-fill: #fff;
+  -fx-font-size: 42px;
+  -fx-font-weight: bold;
+}
+
+.room-info-text.room-text-pricing {
+  -fx-text-fill: #19a327;
+  -fx-font-size: 40px;
+}
+
+.room-info-text-secondary {
+  -fx-text-fill: #fff;
+  -fx-font-size: 30px;
+}
+
+.field-label {
+  -fx-text-fill: #fff;
+  -fx-font-size: 20px;
+  -fx-font-weight: bold;
+}
+
+.field {
+  -fx-pref-width: 300px;
+  -fx-pref-height: 60px;
+  -fx-background-color: #c6c9e9;
+  -fx-background-radius: 10px;
+  -fx-border-radius: 10px;
+  -fx-font-size: 18px;
+}

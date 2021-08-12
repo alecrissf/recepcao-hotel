@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:controller="com.recepcaohotel.controller.EstadiaController" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/estadia.css" styleClass="wrapper-container">
+  <StackPane AnchorPane.topAnchor="28" styleClass="header">
+    <Label alignment="center" text="Estadia" styleClass="header-title" />
+  </StackPane>
+  <StackPane AnchorPane.topAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0">
+    <VBox alignment="center" fillWidth="false" maxWidth="770" maxHeight="200" spacing="20" styleClass="main-container">
+      <Label text="Insira o Período de Estadia Pretendido no Hotel" styleClass="main-title" />
+      <HBox alignment="center" spacing="210">
+        <VBox alignment="center" spacing="5">
+          <Label text="Data de entrada" styleClass="date-picker-label" />
+          <DatePicker fx:id="entradaDatePicker" styleClass="date-picker" />
+        </VBox>
+        <VBox alignment="center" spacing="5">
+          <Label text="Data de saida" styleClass="date-picker-label" />
+          <DatePicker fx:id="saidaDatePicker" styleClass="date-picker" />
+        </VBox>
+      </HBox>
+      <HBox alignment="center" spacing="20">
+        <Button fx:id="botaoBuscarQuartos" text="Buscar Quartos" onAction="#buscarQuartos" styleClass="search-rooms-button" />
+        <Button fx:id="botaoVoltar" text="Voltar" onAction="#voltar" styleClass="back-button" />
+      </HBox>
+    </VBox>
+  </StackPane>
+</AnchorPane>
