@@ -4,12 +4,13 @@ public class Admin {
     private String nomeUsuario;
     private String senha;
 
-    boolean isAutenticado(String nomeUsuario, String senha){
-        //TODO: Melhorar essa lógica do usuário para verificar login
-        if(nomeUsuario == this.getNomeUsuario() && senha == this.senha){
-            return true;
-        }
-        return false;
+    public Admin() {
+
+    }
+
+    public Admin(String nomeUsuario, String senha) {
+        this.nomeUsuario = nomeUsuario;
+        this.senha = senha;
     }
 
     public void setNomeUsuario(String nomeUsuario) {

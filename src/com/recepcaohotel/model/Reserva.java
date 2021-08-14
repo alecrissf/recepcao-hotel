@@ -17,6 +17,17 @@ public class Reserva {
         this.id = f.nextInt(100000);
     }
 
+    public Reserva(Date dataEntrada, Date dataSaida) {
+        // Gerar código da reserva em sequencia pseudoaleatoria
+        // Pensar em verificar a ocorrência de números aleatórios iguais
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
+        this.isCancelada = false;
+        this.isConcluida = false;
+        Random f = new Random();
+        this.id = f.nextInt(100000);
+    }
+
     public void setDataEntrada(Date dataEntrada) {
         this.dataEntrada = dataEntrada;
     }
@@ -54,6 +65,7 @@ public class Reserva {
     }
 
     int estadiaEmDias() {
+        // Se negativo, significa que data de entrada maior que de saída
         long diff = getDataSaida().getTime() - getDataEntrada().getTime();
         return (int) diff / (1000 * 60 * 60 * 24);
     }

@@ -4,9 +4,21 @@ public class Quarto {
 
     private int numero;
     private int qntdCamasCasal;
-    private int qntdCamasSolteira;
+    private int qntdCamasSolteiro;
     private float diaria;
     private boolean isDisponivel;
+
+    public Quarto() {
+
+    }
+
+    public Quarto(int numero, int qntdCamasCasal, int qntdCamasSolteiro, float diaria) {
+        this.numero = numero;
+        this.qntdCamasCasal = qntdCamasCasal;
+        this.qntdCamasSolteiro = qntdCamasSolteiro;
+        this.diaria = diaria;
+        this.isDisponivel = true;
+    }
 
     public void setNumero(int numero) {
         this.numero = numero;
@@ -16,8 +28,8 @@ public class Quarto {
         this.qntdCamasCasal = qntdCamasCasal;
     }
 
-    public void setQntdCamasSolteira(int qntdCamasSolteira) {
-        this.qntdCamasSolteira = qntdCamasSolteira;
+    public void setQntdCamasSolteiro(int qntdCamasSolteiro) {
+        this.qntdCamasSolteiro = qntdCamasSolteiro;
     }
 
     public void setDiaria(float diaria) {
@@ -36,8 +48,8 @@ public class Quarto {
         return qntdCamasCasal;
     }
 
-    public int getQntdCamasSolteira() {
-        return qntdCamasSolteira;
+    public int getQntdCamasSolteiro() {
+        return qntdCamasSolteiro;
     }
 
     public float getDiaria() {
