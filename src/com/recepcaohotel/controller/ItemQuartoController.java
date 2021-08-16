@@ -70,8 +70,8 @@ public class ItemQuartoController {
 
         // Atualizar texto dos campos com base no objeto quarto.
         numeroQuarto.setText(String.valueOf(quarto.getNumero()));
-        numeroCamasDeCasal.setText(String.valueOf(quarto.getQntdCamasCasal()));
-        numeroCamasDeSolteiro.setText(String.valueOf(quarto.getQntdCamasSolteiro()));
+        numeroCamasDeCasal.setText("Camas de Casal: " + quarto.getQntdCamasCasal());
+        numeroCamasDeSolteiro.setText("Camas de Solteiro: " + quarto.getQntdCamasSolteiro());
         dataEntrada.setText(ctx.getDataEntrada().toString());
         dataSaida.setText(ctx.getDataSaida().toString());
         precoEstadia.setText(String.valueOf(quarto.getDiaria()));
