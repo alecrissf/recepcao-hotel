@@ -1,38 +1,39 @@
 package com.recepcaohotel.model;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Random;
+import java.time.temporal.ChronoUnit;
 
 public class Reserva {
     private int id;
-    private Date dataEntrada;
-    private Date dataSaida;
+    private LocalDate dataEntrada;
+    private LocalDate dataSaida;
     private boolean isConcluida;
     private boolean isCancelada;
+    private Quarto quarto;
+    private DetalhesEstadia detalhesEstadia;
+    private Cliente cliente;
 
     public Reserva() {
+        this(LocalDate.now(), LocalDate.now());
+    }
+
+    public Reserva(LocalDate dataEntrada, LocalDate dataSaida) {
         // Gerar código da reserva em sequencia pseudoaleatoria
         // Pensar em verificar a ocorrência de números aleatórios iguais
         Random f = new Random();
         this.id = f.nextInt(100000);
-    }
-
-    public Reserva(Date dataEntrada, Date dataSaida) {
-        // Gerar código da reserva em sequencia pseudoaleatoria
-        // Pensar em verificar a ocorrência de números aleatórios iguais
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
         this.isCancelada = false;
         this.isConcluida = false;
-        Random f = new Random();
-        this.id = f.nextInt(100000);
     }
 
-    public void setDataEntrada(Date dataEntrada) {
+    public void setDataEntrada(LocalDate dataEntrada) {
         this.dataEntrada = dataEntrada;
     }
 
-    public void setDataSaida(Date dataSaida) {
+    public void setDataSaida(LocalDate dataSaida) {
         this.dataSaida = dataSaida;
     }
 
@@ -44,11 +45,11 @@ public class Reserva {
         this.isConcluida = isConcluida;
     }
 
-    public Date getDataEntrada() {
+    public LocalDate getDataEntrada() {
         return dataEntrada;
     }
 
-    public Date getDataSaida() {
+    public LocalDate getDataSaida() {
         return dataSaida;
     }
 
@@ -64,15 +65,37 @@ public class Reserva {
         return id;
     }
 
-    int estadiaEmDias() {
-        // Se negativo, significa que data de entrada maior que de saída
-        long diff = getDataSaida().getTime() - getDataEntrada().getTime();
-        return (int) diff / (1000 * 60 * 60 * 24);
+    public Quarto getQuarto() {
+        return quarto;
     }
 
-    // Declaração de data:
-    // Calendar calendar = Calendar.getInstance();
-    // calendar.set(2000,1,10);
-    // Date dataIni = calendar.getTime();
+    public void setQuarto(Quarto quarto) {
+        this.quarto = quarto;
+    }
 
+    public DetalhesEstadia getDetalhesEstadia() {
+        return detalhesEstadia;
+    }
+
+    public void setDetalhesEstadia(DetalhesEstadia detalhesEstadia) {
+        this.detalhesEstadia = detalhesEstadia;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public float calcularPrecoTotal() {
+        return this.getQuarto().getDiaria() + this.getDetalhesEstadia().getServicoDeQuarto()
+                + this.getDetalhesEstadia().getFrigobar();
+    }
+
+    public int estadiaEmDias() {
+        // Se negativo, significa que data de entrada maior que de saída
+        return (int) ChronoUnit.DAYS.between(this.getDataEntrada(), this.getDataSaida()) + 1;
+    }
 }
