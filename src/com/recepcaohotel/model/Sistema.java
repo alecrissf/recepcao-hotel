@@ -8,11 +8,19 @@ public class Sistema {
     // Pensar em como transformar essas coisas para serem lidas de arquivos
 
     // Quartos serão dicionários de numeroQuarto - Quarto
-    Map<Integer, Quarto> quartos = new HashMap<Integer, Quarto>();
-    Map<Integer, Reserva> reservas = new HashMap<Integer, Reserva>();
-    Map<String, String> usuarios = new HashMap<String, String>();
-    boolean isAutenticado;
-    String nomeUsuario;
+    private Map<Integer, Quarto> quartos;
+    private Map<Integer, Reserva> reservas;
+    private Map<String, String> usuarios;
+    private boolean isAutenticado;
+    private String nomeUsuario;
+
+    public Sistema() {
+        this.isAutenticado = false;
+        this.nomeUsuario = "";
+        this.quartos = new HashMap<>();
+        this.reservas = new HashMap<>();
+        this.usuarios = new HashMap<>();
+    }
 
     public void cadastrarReserva(Reserva reserva) {
 
@@ -37,19 +45,23 @@ public class Sistema {
         quartos.remove(numeroQuarto);
     }
 
-    public void setAutenticado(boolean isAutenticado) {
+    public void setIsAutenticado(boolean isAutenticado) {
         this.isAutenticado = isAutenticado;
+    }
+
+    public boolean getIsAutenticado() {
+        return this.isAutenticado;
     }
 
     public void autenticar() {
         // TODO: Como pegar a senha sem perda de segurança?
 
         // Caso o admin criado esteja no map de usuários, autorizar
-        setAutenticado(true);
+        setIsAutenticado(true);
     }
 
     public void finalizarSessao() {
-        setAutenticado(false);
+        setIsAutenticado(false);
     }
 
     public void realizarCheckout(int idReserva) {
@@ -65,11 +77,19 @@ public class Sistema {
         return reservas.values();
     }
 
+    public Quarto getQuarto(int num) {
+        return quartos.get(num);
+    }
+
+    public Reserva getReserva(int id) {
+        return reservas.get(id);
+    }
+
     // Método apenas para testar todos os dados armazenados como Quartos
     public void imprimirQuartos(Collection<Quarto> quartos) {
         for (Quarto quarto : quartos) {
             System.out.println("Quarto numero: " + quarto.getNumero());
-            System.out.println("Valor da diári: " + quarto.getDiaria());
+            System.out.println("Valor da diária: " + quarto.getDiaria());
             System.out.println("Camas de Casal: " + quarto.getQntdCamasCasal());
             System.out.println("Camas de Solteiro: " + quarto.getQntdCamasSolteiro());
             System.out.println("Disponibilidade: " + quarto.getDisponivel() + "\n");
