@@ -2,6 +2,9 @@ package com.recepcaohotel.controller;
 
 import java.io.IOException;
 
+import com.recepcaohotel.app.App;
+import com.recepcaohotel.model.Sistema;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,8 +24,9 @@ public class CheckoutController {
 
     @FXML
     private void confirmarCheckout(ActionEvent event) {
-        // TODO: fazer a lógica de fazer checkout.
-        System.out.println("Código digitado: " + campoCodigoReserva.getText());
+        // Fazer checkout.
+        Sistema s = App.getSystemInstance();
+        s.realizarCheckout(Integer.parseInt(campoCodigoReserva.getText()));
 
         if (event.getSource() == botaoConfirmarCheckout) {
             try {
