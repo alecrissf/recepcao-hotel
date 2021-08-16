@@ -2,14 +2,17 @@ package com.recepcaohotel.controller;
 
 import java.io.IOException;
 
+import com.recepcaohotel.controller.context.AdminContext;
 import com.recepcaohotel.model.Reserva;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Alert.AlertType;
 
 public class ADMItemReservaController {
     private Reserva reserva = null;
@@ -34,7 +37,9 @@ public class ADMItemReservaController {
 
     @FXML
     private void editar(ActionEvent event) {
-        // TODO: Guardar as informações no contexto de admin.
+        if (!selecionarReserva()) {
+            return;
+        }
 
         if (event.getSource() == botaoEditar) {
             try {
@@ -48,7 +53,9 @@ public class ADMItemReservaController {
 
     @FXML
     private void cancelar(ActionEvent event) {
-        // TODO: Guardar as informações no contexto de admin.
+        if (!selecionarReserva()) {
+            return;
+        }
 
         if (event.getSource() == botaoCancelar) {
             try {
@@ -64,7 +71,17 @@ public class ADMItemReservaController {
         if (reserva == null) {
             return;
         }
-        // TODO: atualizar texto dos campos com base no objeto reserva.
+        // Atualizar texto dos campos com base no objeto reserva.
+        codigoReserva.setText("#" + reserva.getId());
+        precoTotal.setText("R$" + reserva.calcularPrecoTotal());
+        textoEmProgresso.setText(reserva.getConcluida() ? "Concluida" : "Em progresso");
+        if (reserva.getConcluida()) {
+            textoEmProgresso.getStyleClass().add("unavailable");
+        }
+        textoCancelado.setText(reserva.getCancelada() ? "Cancelada" : "Não Cancelada");
+        if (reserva.getCancelada()) {
+            textoCancelado.getStyleClass().add("unavailable");
+        }
     }
 
     public Reserva getReserva() {
@@ -75,5 +92,24 @@ public class ADMItemReservaController {
         this.reserva = reserva;
 
         updateInfo();
+    }
+
+    private boolean selecionarReserva() {
+        if (reserva == null) {
+            // Mostrar mensagem de erro.
+            mostrarErro();
+            return false;
+        }
+        // Guardar as informações no contexto de admin.
+        AdminContext ctx = AdminContext.getInstance();
+        ctx.setReservaSelecionada(reserva);
+        return true;
+    }
+
+    private void mostrarErro() {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erro de execução");
+        alert.setContentText("Ops! Parece que houve um erro ao selecionar a Reserva.");
+        alert.showAndWait();
     }
 }

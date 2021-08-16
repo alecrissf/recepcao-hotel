@@ -74,7 +74,7 @@ public class ItemQuartoController {
         numeroCamasDeSolteiro.setText("Camas de Solteiro: " + quarto.getQntdCamasSolteiro());
         dataEntrada.setText(ctx.getDataEntrada().toString());
         dataSaida.setText(ctx.getDataSaida().toString());
-        precoEstadia.setText(String.valueOf(quarto.getDiaria()));
+        precoEstadia.setText("R$" + quarto.getDiaria());
     }
 
     public Quarto getQuarto() {
