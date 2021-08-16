@@ -2,13 +2,26 @@ package com.recepcaohotel.controller;
 
 import java.io.IOException;
 
+import com.recepcaohotel.controller.context.ReservationContext;
+import com.recepcaohotel.model.Reserva;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 
 public class ConfirmarDadosController {
+    @FXML
+    private TextField campoNome;
+
+    @FXML
+    private TextField campoEmail;
+
+    @FXML
+    private TextField campoTelefone;
+
     @FXML
     Button botaoConfirmarReserva;
 
@@ -17,7 +30,10 @@ public class ConfirmarDadosController {
 
     @FXML
     private void confirmarReserva(ActionEvent event) {
-        // TODO: guardar informações no contexto e mudar para a página final.
+        ReservationContext ctx = ReservationContext.getInstance();
+        // TODO: Criar a reserva, guardar informações no contexto e mudar para a página final.
+        // TODO: Refatorar a classe Reserva para substituir o tipo Date por LocalDate.
+        // Reserva reserva = new Reserva(ctx.getDataEntrada(), ctx.getDataSaida());
 
         if (event.getSource() == botaoConfirmarReserva) {
             try {
