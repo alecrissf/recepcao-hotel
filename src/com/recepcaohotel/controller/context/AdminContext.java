@@ -1,5 +1,8 @@
 package com.recepcaohotel.controller.context;
 
+import com.recepcaohotel.model.Quarto;
+import com.recepcaohotel.model.Reserva;
+
 public class AdminContext {
     // ---- Padrão Singleton ---------------------------------------------------
     private static AdminContext instance;
@@ -25,10 +28,34 @@ public class AdminContext {
     // -------------------------------------------------------------------------
 
     // ---- Campos -------------------------------------------------------------
-    // TODO: definir campos.
+    // ---- Seção de Quartos ----
+    // Usado para saber qual quarto será editado/removido.
+    private Quarto quartoSelecionado;
+
+    // ---- Seção de Reservas ----
+    // Usado para saber qual reserva será editada/cancelada.
+    private Reserva reservaSelecionada;
     // -------------------------------------------------------------------------
 
     public AdminContext() {
-        // TODO: definir valores iniciais para os campos.
+        // Definir valores iniciais para os campos.
+        this.quartoSelecionado = null;
+        this.reservaSelecionada = null;
+    }
+
+    public Quarto getQuartoSelecionado() {
+        return quartoSelecionado;
+    }
+
+    public void setQuartoSelecionado(Quarto quartoSelecionado) {
+        this.quartoSelecionado = quartoSelecionado;
+    }
+
+    public Reserva getReservaSelecionada() {
+        return reservaSelecionada;
+    }
+
+    public void setReservaSelecionada(Reserva reservaSelecionada) {
+        this.reservaSelecionada = reservaSelecionada;
     }
 }
