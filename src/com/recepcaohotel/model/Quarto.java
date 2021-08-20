@@ -9,7 +9,7 @@ public class Quarto {
     private boolean isDisponivel;
 
     public Quarto() {
-
+        this(0, 0, 0, 0);
     }
 
     public Quarto(int numero, int qntdCamasCasal, int qntdCamasSolteiro, float diaria) {
