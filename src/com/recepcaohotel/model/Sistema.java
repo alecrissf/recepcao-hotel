@@ -21,13 +21,6 @@ public class Sistema {
         this.reservas = new HashMap<>();
         this.usuarios = new HashMap<>();
 
-        this.usuarios.put("adm", new Admin("adm", "123456"));
-
-        this.adicionarQuarto(new Quarto(1, 1, 0, 120));
-        this.adicionarQuarto(new Quarto(2, 2, 0, 180));
-        this.adicionarQuarto(new Quarto(3, 1, 1, 220));
-        this.adicionarQuarto(new Quarto(4, 1, 2, 320));
-
         // Pegar informações de arquivos para preencher as listas.
         this.recuperarDados();
     }
