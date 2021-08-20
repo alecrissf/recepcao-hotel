@@ -17,7 +17,7 @@ public class App extends Application {
     private static Sistema systemInstance = null;
 
     public static void main(String[] args) {
-        // TODO: adaptar quando a classe Sistema for implementada.
+        // Criar a instância de Sistema.
         systemInstance = new Sistema();
         launch(args);
     }

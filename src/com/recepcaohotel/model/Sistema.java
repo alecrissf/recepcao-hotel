@@ -10,16 +10,19 @@ public class Sistema {
     // Quartos serão dicionários de numeroQuarto - Quarto
     private Map<Integer, Quarto> quartos;
     private Map<Integer, Reserva> reservas;
-    private Map<String, String> usuarios;
+    private Map<String, Admin> usuarios;
     private boolean isAutenticado;
     private String nomeUsuario;
 
     public Sistema() {
         this.isAutenticado = false;
-        this.nomeUsuario = "";
+        this.nomeUsuario = null;
         this.quartos = new HashMap<>();
         this.reservas = new HashMap<>();
         this.usuarios = new HashMap<>();
+
+        // Pegar informações de arquivos para preencher as listas.
+        this.recuperarDados();
     }
 
     public void cadastrarReserva(Reserva reserva) {
@@ -53,11 +56,20 @@ public class Sistema {
         return this.isAutenticado;
     }
 
-    public void autenticar() {
-        // TODO: Como pegar a senha sem perda de segurança?
-
+    public boolean autenticar(String nomeUsuario, String senha) {
+        Admin adm = usuarios.get(nomeUsuario);
+        // Caso o nome de usuário não exista retornar falso.
+        if (adm == null) {
+            return false;
+        }
+        // Caso a senha for inválida retornar falso.
+        if (!adm.compararSenha(senha)) {
+            return false;
+        }
         // Caso o admin criado esteja no map de usuários, autorizar
         setIsAutenticado(true);
+        this.nomeUsuario = nomeUsuario;
+        return true;
     }
 
     public void finalizarSessao() {
@@ -83,6 +95,18 @@ public class Sistema {
 
     public Reserva getReserva(int id) {
         return reservas.get(id);
+    }
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void recuperarDados() {
+        // TODO: Lógica para recuperar os dados dos arquivos salvos.
+    }
+
+    public void salvarDados() {
+        // TODO: Lógica para salvar os dados em arquivos.
     }
 
     // Método apenas para testar todos os dados armazenados como Quartos

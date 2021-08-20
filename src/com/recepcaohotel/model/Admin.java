@@ -4,10 +4,6 @@ public class Admin {
     private String nomeUsuario;
     private String senha;
 
-    public Admin() {
-
-    }
-
     public Admin(String nomeUsuario, String senha) {
         this.nomeUsuario = nomeUsuario;
         this.senha = senha;
@@ -23,5 +19,9 @@ public class Admin {
 
     public String getNomeUsuario() {
         return nomeUsuario;
+    }
+
+    public boolean compararSenha(String senhaParaComparar) {
+        return this.senha.equals(senhaParaComparar);
     }
 }
