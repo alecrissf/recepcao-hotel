@@ -80,7 +80,7 @@ public class ADMItemQuartoController {
         numeroCamasDeSolteiro.setText("Camas de Solteiro: " + quarto.getQntdCamasSolteiro());
         precoEstadia.setText("R$" + quarto.getDiaria());
         textoDisponibilidade.setText(quarto.getDisponivel() ? "Disponível" : "Indisponível");
-        if (quarto.getDisponivel()) {
+        if (!quarto.getDisponivel()) {
             textoDisponibilidade.getStyleClass().add("unavailable");
         }
     }

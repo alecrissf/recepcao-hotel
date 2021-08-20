@@ -21,20 +21,34 @@ public class Sistema {
         this.reservas = new HashMap<>();
         this.usuarios = new HashMap<>();
 
+        this.usuarios.put("adm", new Admin("adm", "123456"));
+
+        this.adicionarQuarto(new Quarto(1, 1, 0, 120));
+        this.adicionarQuarto(new Quarto(2, 2, 0, 180));
+        this.adicionarQuarto(new Quarto(3, 1, 1, 220));
+        this.adicionarQuarto(new Quarto(4, 1, 2, 320));
+
         // Pegar informações de arquivos para preencher as listas.
         this.recuperarDados();
     }
 
     public void cadastrarReserva(Reserva reserva) {
+        // Fazer o quarto ficar indisponível.
+        reserva.getQuarto().setDisponivel(false);
 
         // Como se espera um número único de Id, não devem haver problemas na inserção
         reservas.put(reserva.getId(), reserva);
     }
 
     public void cancelarReserva(int idReserva) {
-
         // Caso não ache no map, nada acontece
-        reservas.remove(idReserva);
+        Reserva reserva = getReserva(idReserva);
+        if (reserva == null) {
+            return;
+        }
+        reserva.getQuarto().setDisponivel(true);
+        reserva.setCancelada(true);
+        // reservas.remove(idReserva).getQuarto().setDisponivel(true);
     }
 
     public void adicionarQuarto(Quarto quarto) {
@@ -77,8 +91,14 @@ public class Sistema {
     }
 
     public void realizarCheckout(int idReserva) {
+        Reserva reserva = getReserva(idReserva);
+        if (reserva == null) {
+            return;
+        }
+        reserva.getQuarto().setDisponivel(true);
+        reserva.setConcluida(true);
         // Adicionar também a lógica para calacular o preço total
-        reservas.remove(idReserva);
+        // reservas.remove(idReserva);
     }
 
     public Collection<Quarto> consultarQuartos() {
