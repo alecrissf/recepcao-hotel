@@ -2,6 +2,10 @@ package com.recepcaohotel.controller;
 
 import java.io.IOException;
 
+import com.recepcaohotel.app.App;
+import com.recepcaohotel.controller.context.AdminContext;
+import com.recepcaohotel.model.Sistema;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,7 +48,11 @@ public class PainelControleController {
 
     @FXML
     private void voltar(ActionEvent event) {
-        // TODO: deslogar o admin e resetar o contexto do admin.
+        // Deslogar o admin.
+        Sistema s = App.getSystemInstance();
+        s.finalizarSessao();
+        // Resetar o contexto do admin.
+        AdminContext.finishContext();
 
         if (event.getSource() == botaoVoltar) {
             try {
