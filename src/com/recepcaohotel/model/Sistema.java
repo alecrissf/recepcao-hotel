@@ -2,7 +2,9 @@ package com.recepcaohotel.model;
 
 import java.util.Collection;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class Sistema {
     // Pensar em como transformar essas coisas para serem lidas de arquivos
@@ -96,18 +98,26 @@ public class Sistema {
     }
 
     public Collection<Quarto> consultarQuartos() {
-        return quartos.values();
+        // Precisa retornar uma copia do set
+        Set<Quarto> copia = new LinkedHashSet<Quarto>();
+        copia.addAll(quartos.values());
+        return copia;
     }
 
     public Collection<Reserva> consultarReservas() {
-        return reservas.values();
+        // Precisa retornar uma copia do set
+        Set<Reserva> copia = new LinkedHashSet<Reserva>();
+        copia.addAll(reservas.values());
+        return copia;
     }
 
     public Quarto getQuarto(int num) {
+        // Observar que retornar uma referencia para este quarto (cuidado!)
         return quartos.get(num);
     }
 
     public Reserva getReserva(int id) {
+        // Observar que retornar uma referencia para esta reserva (cuidado!)
         return reservas.get(id);
     }
 

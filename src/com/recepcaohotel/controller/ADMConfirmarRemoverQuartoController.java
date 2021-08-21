@@ -2,6 +2,10 @@ package com.recepcaohotel.controller;
 
 import java.io.IOException;
 
+import com.recepcaohotel.app.App;
+import com.recepcaohotel.controller.context.AdminContext;
+import com.recepcaohotel.model.Sistema;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -21,12 +25,19 @@ public class ADMConfirmarRemoverQuartoController {
 
     @FXML
     private void initialize() {
-        // TODO: mudar o texto de codigoQuarto para o código guardado no contexto do admin.
+        // Exibe o quarto no formato 'Quarto 00X' onde X é o número do quarto
+        AdminContext ctx = AdminContext.getInstance();
+        codigoQuarto.setText("Quarto " + " " + String.format("%03d", ctx.getQuartoSelecionado().getNumero()));
     }
 
     @FXML
     private void sim(ActionEvent event) {
-        // TODO: remover quarto.
+
+        // Pega o quarto selecionado no contexto do ADM e remove do sistema
+        Sistema s = App.getSystemInstance();
+        AdminContext ctx = AdminContext.getInstance();
+
+        s.removerQuarto(ctx.getQuartoSelecionado().getNumero());
 
         if (event.getSource() == botaoSim) {
             voltar(botaoSim);

@@ -4,7 +4,7 @@ public class DetalhesEstadia {
     private float servicoDeQuarto;
     private float frigobar;
 
-    DetalhesEstadia() {
+    public DetalhesEstadia() {
         this.servicoDeQuarto = 0;
         this.frigobar = 0;
     }
