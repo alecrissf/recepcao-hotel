@@ -7,7 +7,10 @@ import java.util.Map;
 import java.util.Set;
 
 public class Sistema {
-    // Pensar em como transformar essas coisas para serem lidas de arquivos
+    // Constantes dos nomes dos arquivos.
+    public final String ARQ_QUARTOS = "quartos.csv";
+    public final String ARQ_RESERVAS = "reservas.csv";
+    public final String ARQ_USUARIOS = "usuarioa.csv";
 
     // Quartos serão dicionários de numeroQuarto - Quarto
     private Map<Integer, Quarto> quartos;
@@ -129,8 +132,23 @@ public class Sistema {
         // TODO: Lógica para recuperar os dados dos arquivos salvos.
     }
 
+    private void recuperarQuartos() {
+    }
+
+    private void recuperarReservas() {
+    }
+
+    private void recuperarUsuarios() {
+    }
+
     public void salvarDados() {
         // TODO: Lógica para salvar os dados em arquivos.
+    }
+
+    private void salvarQuartos() {
+    }
+
+    private void salvarReservas() {
     }
 
     // Método apenas para testar todos os dados armazenados como Quartos
