@@ -66,7 +66,6 @@ public class BuscaQuartosController {
                 listaQuartos.remove(reserva.getQuarto());
             }
         }
-        
         atualizarListaDeQuartos(listaQuartos);
     }
 

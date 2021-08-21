@@ -90,7 +90,7 @@ public class Reserva {
     }
 
     public float calcularPrecoTotal() {
-        return this.getQuarto().getDiaria() + this.getDetalhesEstadia().getServicoDeQuarto()
+        return this.getQuarto().getDiaria()*estadiaEmDias() + this.getDetalhesEstadia().getServicoDeQuarto()
                 + this.getDetalhesEstadia().getFrigobar();
     }
 

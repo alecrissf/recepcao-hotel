@@ -3,7 +3,6 @@ package com.recepcaohotel.controller;
 import java.io.IOException;
 
 import com.recepcaohotel.controller.context.ReservationContext;
-import com.recepcaohotel.model.Reserva;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
