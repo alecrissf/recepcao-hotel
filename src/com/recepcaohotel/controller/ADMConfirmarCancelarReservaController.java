@@ -1,6 +1,12 @@
 package com.recepcaohotel.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
+
+import com.recepcaohotel.app.App;
+import com.recepcaohotel.controller.context.AdminContext;
+import com.recepcaohotel.model.Reserva;
+import com.recepcaohotel.model.Sistema;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,12 +27,23 @@ public class ADMConfirmarCancelarReservaController {
 
     @FXML
     private void initialize() {
-        // TODO: mudar o texto de codigoReserva para o código guardado no contexto do admin.
+        AdminContext ctx = AdminContext.getInstance();
+        codigoReserva.setText("#" + String.valueOf(ctx.getReservaSelecionada().getId()));
     }
 
     @FXML
     private void sim(ActionEvent event) {
-        // TODO: cancelar reserva.
+
+        Sistema s = App.getSystemInstance();
+        AdminContext ctx = AdminContext.getInstance();
+
+        // Atualiza a data de saída da reserva e seta a mesma como 'cancelada' e
+        // 'finalizada'
+        Reserva r = s.getReserva(ctx.getReservaSelecionada().getId());
+
+        r.setDataSaida(LocalDate.now());
+        r.setCancelada(true);
+        r.setConcluida(true);
 
         if (event.getSource() == botaoSim) {
             voltar(botaoSim);

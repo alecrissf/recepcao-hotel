@@ -27,6 +27,7 @@ public class Reserva {
         this.dataSaida = dataSaida;
         this.isCancelada = false;
         this.isConcluida = false;
+        this.detalhesEstadia = new DetalhesEstadia();
     }
 
     public void setDataEntrada(LocalDate dataEntrada) {
@@ -90,7 +91,7 @@ public class Reserva {
     }
 
     public float calcularPrecoTotal() {
-        return this.getQuarto().getDiaria()*estadiaEmDias() + this.getDetalhesEstadia().getServicoDeQuarto()
+        return this.getQuarto().getDiaria() * estadiaEmDias() + this.getDetalhesEstadia().getServicoDeQuarto()
                 + this.getDetalhesEstadia().getFrigobar();
     }
 
