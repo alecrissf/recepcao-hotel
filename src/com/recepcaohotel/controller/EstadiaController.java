@@ -10,6 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class EstadiaController {
     @FXML
@@ -42,6 +44,13 @@ public class EstadiaController {
 
         // Ir para a página de escolha de quartos.
         if (event.getSource() == botaoBuscarQuartos) {
+
+            // Verficar se A data de Entrada é maior do que a de Saída
+            if (ctx.getDataEntrada().isAfter(ctx.getDataSaida())) {
+                mostrarErroCampos("'Data de Entrada' maior do que 'Data de Saída'.");
+                return;
+            }
+
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("../view/fxml/BuscaQuartos.fxml"));
                 botaoBuscarQuartos.getScene().setRoot(root);
@@ -64,5 +73,12 @@ public class EstadiaController {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void mostrarErroCampos(String msg) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erro de campos");
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }
