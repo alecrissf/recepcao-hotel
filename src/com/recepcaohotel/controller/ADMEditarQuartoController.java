@@ -11,9 +11,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class ADMEditarQuartoController {
     @FXML
@@ -59,33 +61,37 @@ public class ADMEditarQuartoController {
 
         // OBS.: campos vazios significam não mudança.
         try {
-            if (campoQtdCamasDeCasal.getText() != "") {
+            if (!campoQtdCamasDeCasal.getText().isBlank()) {
                 q.setQntdCamasCasal(Integer.parseInt(campoQtdCamasDeCasal.getText()));
             }
         } catch (NumberFormatException e) {
-            q.setQntdCamasCasal(Integer.parseInt("0"));
+            mostrarErroCampos("Verifique o Número Digitado no campo 'Camas de Casal'.");
             e.printStackTrace();
+            return;
         }
 
         try {
-            if (campoQtdCamasDeSolteiro.getText() != "") {
+            if (!campoQtdCamasDeSolteiro.getText().isBlank()) {
                 q.setQntdCamasSolteiro(Integer.parseInt(campoQtdCamasDeSolteiro.getText()));
             }
         } catch (NumberFormatException e) {
-            q.setQntdCamasSolteiro(Integer.parseInt("0"));
+            mostrarErroCampos("Verifique o Número Digitado no campo 'Camas de Solteiro'.");
             e.printStackTrace();
+            return;
         }
 
         try {
-            if (campoValorDiaria.getText() != "") {
+            if (!campoValorDiaria.getText().isBlank()) {
                 q.setDiaria(Float.parseFloat(campoValorDiaria.getText()));
-                ;
             }
         } catch (NumberFormatException e) {
-            q.setDiaria(Float.parseFloat("0.0"));
+            mostrarErroCampos("Verifique o formado do número digitado no 'Valor da Diária'.");
             e.printStackTrace();
+            return;
         }
+
         s.adicionarQuarto(q);
+
         if (event.getSource() == botaoConfirmar) {
             voltar(botaoConfirmar);
         }
@@ -105,5 +111,12 @@ public class ADMEditarQuartoController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void mostrarErroCampos(String msg) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erro de campos");
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }
