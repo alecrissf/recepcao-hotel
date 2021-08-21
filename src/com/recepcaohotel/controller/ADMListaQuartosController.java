@@ -1,11 +1,11 @@
 package com.recepcaohotel.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
+import com.recepcaohotel.app.App;
 import com.recepcaohotel.model.Quarto;
+import com.recepcaohotel.model.Sistema;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,18 +29,16 @@ public class ADMListaQuartosController {
 
     @FXML
     private void initialize() {
+        Sistema s = App.getSystemInstance();
         // Inicializar a lista de quartos.
-        // OBS.: versão temporária, sujeita a modificações futuras.
-        Quarto demo[] = { new Quarto(), new Quarto(), new Quarto() };
-        atualizarListaDeQuartos(new ArrayList<>(Arrays.asList(demo)));
+        atualizarListaDeQuartos(s.consultarQuartos());
     }
 
     @FXML
     private void atualizar() {
-        // Atualizar a lista de quartos.
-        // OBS.: versão temporária, sujeita a modificações futuras.
-        Quarto demo[] = { new Quarto(), new Quarto() };
-        atualizarListaDeQuartos(new ArrayList<>(Arrays.asList(demo)));
+        Sistema s = App.getSystemInstance();
+        // Inicializar a lista de quartos.
+        atualizarListaDeQuartos(s.consultarQuartos());
     }
 
     @FXML

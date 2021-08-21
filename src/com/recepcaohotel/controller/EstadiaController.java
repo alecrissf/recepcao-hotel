@@ -1,7 +1,8 @@
 package com.recepcaohotel.controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
+
+import com.recepcaohotel.controller.context.ReservationContext;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -25,13 +26,19 @@ public class EstadiaController {
 
     @FXML
     private void initialize() {
-        entradaDatePicker.setValue(LocalDate.now());
-        saidaDatePicker.setValue(LocalDate.now());
+        ReservationContext ctx = ReservationContext.getInstance();
+
+        entradaDatePicker.setValue(ctx.getDataEntrada());
+        saidaDatePicker.setValue(ctx.getDataSaida());
     }
 
     @FXML
     private void buscarQuartos(ActionEvent event) {
-        // TODO: coletar as informações dos campos de data e guardar no contexto de reserva.
+        // Coletar as informações dos campos de data e guardar no contexto de reserva.
+        ReservationContext ctx = ReservationContext.getInstance();
+
+        ctx.setDataEntrada(entradaDatePicker.getValue());
+        ctx.setDataSaida(saidaDatePicker.getValue());
 
         // Ir para a página de escolha de quartos.
         if (event.getSource() == botaoBuscarQuartos) {
@@ -46,6 +53,9 @@ public class EstadiaController {
 
     @FXML
     private void voltar(ActionEvent event) {
+        // Resetar o contexto de reserva.
+        ReservationContext.finishContext();
+        // Voltar para a página principal.
         if (event.getSource() == botaoVoltar) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("../view/fxml/Home.fxml"));

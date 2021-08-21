@@ -2,6 +2,8 @@ package com.recepcaohotel.controller;
 
 import java.io.IOException;
 
+import com.recepcaohotel.controller.context.ReservationContext;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,11 +20,16 @@ public class ReservaConcluidaController {
 
     @FXML
     private void initialize() {
-        // TODO: pegar o código guardado no contexto e colocar no label reservationCode.
+        // Pegar o código guardado no contexto e colocar no label reservationCode.
+        ReservationContext ctx = ReservationContext.getInstance();
+        reservationCode.setText("#" + ctx.getReservaCriada().getId());
     }
 
     @FXML
     private void voltar(ActionEvent event) {
+        // Finalizar o contexto de reserva.
+        ReservationContext.finishContext();
+        // Voltar para a página principal.
         if (event.getSource() == botaoVoltar) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("../view/fxml/Home.fxml"));

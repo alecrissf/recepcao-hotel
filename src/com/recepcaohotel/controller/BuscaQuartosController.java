@@ -1,11 +1,12 @@
 package com.recepcaohotel.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
+import com.recepcaohotel.app.App;
+import com.recepcaohotel.controller.context.ReservationContext;
 import com.recepcaohotel.model.Quarto;
+import com.recepcaohotel.model.Sistema;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,10 +24,12 @@ public class BuscaQuartosController {
 
     @FXML
     private void initialize() {
+        ReservationContext ctx = ReservationContext.getInstance();
+        Sistema s = App.getSystemInstance();
         // Inicializar a lista de quartos.
-        // OBS.: versão temporária, sujeita a modificações futuras.
-        Quarto demo[] = { new Quarto(), new Quarto(), new Quarto() };
-        atualizarListaDeQuartos(new ArrayList<>(Arrays.asList(demo)));
+        Collection<Quarto> listaQuartos = s.consultarQuartos();
+        // TODO: Filtrar coleção usando as datas de entrada e saída do contexto.
+        atualizarListaDeQuartos(listaQuartos);
     }
 
     @FXML
