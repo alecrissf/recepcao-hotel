@@ -12,28 +12,38 @@ public class Sistema {
     // Quartos serão dicionários de numeroQuarto - Quarto
     private Map<Integer, Quarto> quartos;
     private Map<Integer, Reserva> reservas;
-    private Map<String, String> usuarios;
+    private Map<String, Admin> usuarios;
     private boolean isAutenticado;
     private String nomeUsuario;
 
     public Sistema() {
         this.isAutenticado = false;
-        this.nomeUsuario = "";
+        this.nomeUsuario = null;
         this.quartos = new HashMap<>();
         this.reservas = new HashMap<>();
         this.usuarios = new HashMap<>();
+
+        // Pegar informações de arquivos para preencher as listas.
+        this.recuperarDados();
     }
 
     public void cadastrarReserva(Reserva reserva) {
+        // Fazer o quarto ficar indisponível.
+        reserva.getQuarto().setDisponivel(false);
 
         // Como se espera um número único de Id, não devem haver problemas na inserção
         reservas.put(reserva.getId(), reserva);
     }
 
     public void cancelarReserva(int idReserva) {
-
         // Caso não ache no map, nada acontece
-        reservas.remove(idReserva);
+        Reserva reserva = getReserva(idReserva);
+        if (reserva == null) {
+            return;
+        }
+        reserva.getQuarto().setDisponivel(true);
+        reserva.setCancelada(true);
+        // reservas.remove(idReserva).getQuarto().setDisponivel(true);
     }
 
     public void adicionarQuarto(Quarto quarto) {
@@ -55,20 +65,36 @@ public class Sistema {
         return this.isAutenticado;
     }
 
-    public void autenticar() {
-        // TODO: Como pegar a senha sem perda de segurança?
-
+    public boolean autenticar(String nomeUsuario, String senha) {
+        Admin adm = usuarios.get(nomeUsuario);
+        // Caso o nome de usuário não exista retornar falso.
+        if (adm == null) {
+            return false;
+        }
+        // Caso a senha for inválida retornar falso.
+        if (!adm.compararSenha(senha)) {
+            return false;
+        }
         // Caso o admin criado esteja no map de usuários, autorizar
         setIsAutenticado(true);
+        this.nomeUsuario = nomeUsuario;
+        return true;
     }
 
     public void finalizarSessao() {
+        this.nomeUsuario = null;
         setIsAutenticado(false);
     }
 
     public void realizarCheckout(int idReserva) {
+        Reserva reserva = getReserva(idReserva);
+        if (reserva == null) {
+            return;
+        }
+        reserva.getQuarto().setDisponivel(true);
+        reserva.setConcluida(true);
         // Adicionar também a lógica para calacular o preço total
-        reservas.remove(idReserva);
+        // reservas.remove(idReserva);
     }
 
     public Collection<Quarto> consultarQuartos() {
@@ -93,6 +119,18 @@ public class Sistema {
     public Reserva getReserva(int id) {
         // Observar que retornar uma referencia para esta reserva (cuidado!)
         return reservas.get(id);
+    }
+
+    public String getNomeUsuario() {
+        return nomeUsuario;
+    }
+
+    public void recuperarDados() {
+        // TODO: Lógica para recuperar os dados dos arquivos salvos.
+    }
+
+    public void salvarDados() {
+        // TODO: Lógica para salvar os dados em arquivos.
     }
 
     // Método apenas para testar todos os dados armazenados como Quartos

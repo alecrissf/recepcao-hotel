@@ -27,6 +27,9 @@ public class ReservaConcluidaController {
 
     @FXML
     private void voltar(ActionEvent event) {
+        // Finalizar o contexto de reserva.
+        ReservationContext.finishContext();
+        // Voltar para a página principal.
         if (event.getSource() == botaoVoltar) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("../view/fxml/Home.fxml"));

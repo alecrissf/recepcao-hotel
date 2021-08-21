@@ -15,10 +15,14 @@ public class Reserva {
     private Cliente cliente;
 
     public Reserva() {
-        this(LocalDate.now(), LocalDate.now());
+        this(new Quarto());
     }
 
-    public Reserva(LocalDate dataEntrada, LocalDate dataSaida) {
+    public Reserva(Quarto quarto) {
+        this(quarto, LocalDate.now(), LocalDate.now());
+    }
+
+    public Reserva(Quarto quarto, LocalDate dataEntrada, LocalDate dataSaida) {
         // Gerar código da reserva em sequencia pseudoaleatoria
         // Pensar em verificar a ocorrência de números aleatórios iguais
         Random f = new Random();
@@ -27,6 +31,7 @@ public class Reserva {
         this.dataSaida = dataSaida;
         this.isCancelada = false;
         this.isConcluida = false;
+        this.quarto = quarto;
         this.detalhesEstadia = new DetalhesEstadia();
     }
 
@@ -91,7 +96,7 @@ public class Reserva {
     }
 
     public float calcularPrecoTotal() {
-        return this.getQuarto().getDiaria() * estadiaEmDias() + this.getDetalhesEstadia().getServicoDeQuarto()
+        return (this.getQuarto().getDiaria() * this.estadiaEmDias()) + this.getDetalhesEstadia().getServicoDeQuarto()
                 + this.getDetalhesEstadia().getFrigobar();
     }
 
