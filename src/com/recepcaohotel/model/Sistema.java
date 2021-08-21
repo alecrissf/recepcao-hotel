@@ -80,6 +80,7 @@ public class Sistema {
     }
 
     public void finalizarSessao() {
+        this.nomeUsuario = null;
         setIsAutenticado(false);
     }
 
