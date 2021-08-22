@@ -1,5 +1,7 @@
 package com.recepcaohotel.model;
 
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.io.File;
 import java.util.Collection;
 import java.util.HashMap;
@@ -44,6 +46,17 @@ public class Sistema {
     public void cadastrarReserva(Reserva reserva) {
         // Fazer o quarto ficar indisponível.
         reserva.getQuarto().setDisponivel(false);
+
+        // Limpar do banco reservas antigas já concluídas
+        for (Reserva reservaSalva : consultarReservas()) {
+
+            // Remover as reservas que estejam concluídas a mais do que 3 dias
+            if ((reservaSalva.getConcluida() || reservaSalva.getCancelada())
+                    && ((int) ChronoUnit.DAYS.between(LocalDate.now(), reservaSalva.getDataSaida())
+                            + 1 > 2)) {
+                this.reservas.remove(reservaSalva.getId());
+            }
+        }
 
         // Como se espera um número único de Id, não devem haver problemas na inserção
         reservas.put(reserva.getId(), reserva);
@@ -149,6 +162,7 @@ public class Sistema {
         return nomeUsuario;
     }
 
+    // Ler quartos e reservas salvos no disco
     public void recuperarDados() {
         this.recuperarQuartos();
         this.recuperarReservas();
@@ -162,6 +176,7 @@ public class Sistema {
         this.reservas = Permanencia.<Integer, Reserva>recuperarDados(CAMINHO_PADRAO + ARQ_RESERVAS);
     }
 
+    // Salvar quartos e reservas no disco
     public void salvarDados() {
         this.salvarQuartos();
         this.salvarReservas();
@@ -190,6 +205,7 @@ public class Sistema {
     public void imprimiReservas(Collection<Reserva> reservas) {
         for (Reserva reserva : reservas) {
             System.out.println("Id da reserva: " + reserva.getId());
+            System.out.println("Quarto: " + reserva.getQuarto().getNumero());
             System.out.println("Data de entrada: " + reserva.getDataEntrada());
             System.out.println("Data de Saída: " + reserva.getDataSaida());
             System.out.println("Cancelada: " + reserva.getCancelada());

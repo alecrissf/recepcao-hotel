@@ -2,10 +2,13 @@ package com.recepcaohotel.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Collection;
 
+import com.recepcaohotel.app.App;
 import com.recepcaohotel.controller.context.AdminContext;
 import com.recepcaohotel.model.DetalhesEstadia;
 import com.recepcaohotel.model.Reserva;
+import com.recepcaohotel.model.Sistema;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -56,6 +59,8 @@ public class ADMEditarReservaController {
     @FXML
     private void confirmar(ActionEvent event) {
         // OBS.: campos vazios significam não mudança.
+        Sistema s = App.getSystemInstance();
+        Collection<Reserva> reservas = s.consultarReservas();
 
         // Recuperar os valores dos campos.
         String qtdServicoQuarto = campoQtdServicoQuarto.getText();
@@ -66,7 +71,7 @@ public class ADMEditarReservaController {
         // Recuperar a reserva selecionada.
         Reserva reserva = AdminContext.getInstance().getReservaSelecionada();
 
-        // Testar a data de saída e colocar o valor de campo data saida na reserva.
+        // Testar a nova data de saída e colocar o valor de campo data saida na reserva.
         if (campoDataSaida.getValue().isBefore(LocalDate.now())) {
             mostrarErroCampos("A 'Data de Saída' anterior a 'Data de Hoje'.");
             return;
@@ -75,6 +80,14 @@ public class ADMEditarReservaController {
         if (campoDataSaida.getValue().isBefore(reserva.getDataEntrada())) {
             mostrarErroCampos("A 'Data de Saída' anterior a 'Data de Entrada'.'");
             return;
+        }
+
+        for (Reserva reservaSalvas : reservas) {
+            if (reserva.getQuarto() == reservaSalvas.getQuarto()
+                    && campoDataSaida.getValue().isAfter(reservaSalvas.getDataEntrada())) {
+                mostrarErroCampos("A nova 'Data de Saída' está indiponível.'");
+                return;
+            }
         }
 
         reserva.setDataSaida(campoDataSaida.getValue());

@@ -10,6 +10,12 @@
   -fx-text-fill: #fff;
 }
 
+.text-names {
+  -fx-text-fill: #fff;
+  -fx-font-size: 16px;
+  -fx-font-weight: bold;
+}
+
 .text-code {
   -fx-text-fill: #8f8f8f;
   -fx-font-weight: bold;

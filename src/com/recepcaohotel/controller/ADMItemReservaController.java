@@ -24,6 +24,15 @@ public class ADMItemReservaController {
     private Label precoTotal;
 
     @FXML
+    private Label nomeUsuario;
+
+    @FXML
+    private Label email;
+
+    @FXML
+    private Label telefone;
+
+    @FXML
     private Label textoEmProgresso;
 
     @FXML
@@ -74,6 +83,9 @@ public class ADMItemReservaController {
         // Atualizar texto dos campos com base no objeto reserva.
         codigoReserva.setText("#" + reserva.getId());
         precoTotal.setText("R$" + String.format("%.2f", reserva.calcularPrecoTotal()).replace(".", ","));
+        nomeUsuario.setText(reserva.getCliente().getNome());
+        email.setText(reserva.getCliente().getEmail());
+        telefone.setText(reserva.getCliente().getTelefone());
         textoEmProgresso.setText(reserva.getConcluida() ? "Concluida" : "Em progresso");
         if (reserva.getConcluida()) {
             textoEmProgresso.getStyleClass().add("unavailable");

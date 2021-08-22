@@ -37,7 +37,15 @@ public class ADMConfirmarCancelarReservaController {
 
         // Atualiza a data de saída da reserva e seta a mesma como 'cancelada' e
         // 'finalizada'
-        s.cancelarReserva(ctx.getReservaSelecionada().getId());
+        Reserva r = s.getReserva(ctx.getReservaSelecionada().getId());
+
+        if (LocalDate.now().isBefore(r.getDataEntrada())) {
+            r.setDataSaida(r.getDataEntrada());
+        } else {
+            r.setDataSaida(LocalDate.now());
+        }
+
+        s.cancelarReserva(r.getId());
 
         if (event.getSource() == botaoSim) {
             voltar(botaoSim);
