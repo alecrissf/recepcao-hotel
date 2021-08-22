@@ -11,12 +11,14 @@ import java.util.Map;
 
 public class Permanencia {
     public static <K, V> Map<K, V> recuperarDados(String caminho) {
-        Map<K, V> dados = new HashMap<>();
+        // Map<K, V> dados = new HashMap<>();
+        Map<K, V> dados = null;
         // Abrir o arquivo.
         File arq = new File(caminho);
         if (!arq.exists()) {
             try {
                 ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arq));
+                dados = new HashMap<>();
                 out.writeObject(dados);
                 out.close();
             } catch (IOException e) {
@@ -26,7 +28,12 @@ public class Permanencia {
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(arq));
             // Percorrer o arquivo.
-            dados = (Map<K, V>) in.readObject();
+            Object obj = in.readObject();
+            if (obj instanceof HashMap) {
+                dados = (HashMap<K, V>) obj;
+            } else {
+                dados = new HashMap<>();
+            }
             in.close();
         } catch (IOException e) {
             e.printStackTrace();
