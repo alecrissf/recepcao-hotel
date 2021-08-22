@@ -42,6 +42,8 @@ public class Sistema {
 
         // Como se espera um número único de Id, não devem haver problemas na inserção
         reservas.put(reserva.getId(), reserva);
+
+        this.salvarReservas();
     }
 
     public void cancelarReserva(int idReserva) {
@@ -53,6 +55,8 @@ public class Sistema {
         reserva.getQuarto().setDisponivel(true);
         reserva.setCancelada(true);
         // reservas.remove(idReserva).getQuarto().setDisponivel(true);
+
+        this.salvarReservas();
     }
 
     public void adicionarQuarto(Quarto quarto) {
@@ -60,10 +64,14 @@ public class Sistema {
         // A ideia é que a inserção de um novo quarto com mesmo número, substitua o
         // anterior
         quartos.put(quarto.getNumero(), quarto);
+
+        this.salvarQuartos();
     }
 
     public void removerQuarto(int numeroQuarto) {
         quartos.remove(numeroQuarto);
+
+        this.salvarQuartos();
     }
 
     public void setIsAutenticado(boolean isAutenticado) {
@@ -104,6 +112,8 @@ public class Sistema {
         reserva.setConcluida(true);
         // Adicionar também a lógica para calacular o preço total
         // reservas.remove(idReserva);
+
+        this.salvarReservas();
     }
 
     public Collection<Quarto> consultarQuartos() {
