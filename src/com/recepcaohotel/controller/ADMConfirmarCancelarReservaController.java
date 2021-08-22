@@ -1,11 +1,9 @@
 package com.recepcaohotel.controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 import com.recepcaohotel.app.App;
 import com.recepcaohotel.controller.context.AdminContext;
-import com.recepcaohotel.model.Reserva;
 import com.recepcaohotel.model.Sistema;
 
 import javafx.event.ActionEvent;
@@ -39,11 +37,7 @@ public class ADMConfirmarCancelarReservaController {
 
         // Atualiza a data de saída da reserva e seta a mesma como 'cancelada' e
         // 'finalizada'
-        Reserva r = s.getReserva(ctx.getReservaSelecionada().getId());
-
-        r.setDataSaida(LocalDate.now());
-        r.setCancelada(true);
-        r.setConcluida(true);
+        s.cancelarReserva(ctx.getReservaSelecionada().getId());
 
         if (event.getSource() == botaoSim) {
             voltar(botaoSim);

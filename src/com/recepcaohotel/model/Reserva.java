@@ -16,14 +16,14 @@ public class Reserva implements Serializable {
     private Cliente cliente;
 
     public Reserva() {
-        this(new Quarto());
+        this(new Quarto(), new Cliente());
     }
 
-    public Reserva(Quarto quarto) {
-        this(quarto, LocalDate.now(), LocalDate.now());
+    public Reserva(Quarto quarto, Cliente cliente) {
+        this(quarto, cliente, LocalDate.now(), LocalDate.now());
     }
 
-    public Reserva(Quarto quarto, LocalDate dataEntrada, LocalDate dataSaida) {
+    public Reserva(Quarto quarto, Cliente cliente, LocalDate dataEntrada, LocalDate dataSaida) {
         // Gerar código da reserva em sequencia pseudoaleatoria
         // Pensar em verificar a ocorrência de números aleatórios iguais
         Random f = new Random();
@@ -33,6 +33,7 @@ public class Reserva implements Serializable {
         this.isCancelada = false;
         this.isConcluida = false;
         this.quarto = quarto;
+        this.cliente = cliente;
         this.detalhesEstadia = new DetalhesEstadia();
     }
 
