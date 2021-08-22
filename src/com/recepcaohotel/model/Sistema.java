@@ -9,6 +9,7 @@ import java.util.Set;
 public class Sistema {
     // Pensar em como transformar essas coisas para serem lidas de arquivos
 
+    // Login do Admin
     Admin ad = new Admin("Admin", "123");
 
     // Quartos serão dicionários de numeroQuarto - Quarto

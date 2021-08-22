@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.recepcaohotel.app.App;
 import com.recepcaohotel.controller.context.ReservationContext;
+import com.recepcaohotel.model.Quarto;
 import com.recepcaohotel.model.Reserva;
 import com.recepcaohotel.model.Sistema;
 
@@ -14,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class ConfirmarDadosController {
@@ -27,10 +29,45 @@ public class ConfirmarDadosController {
     private TextField campoTelefone;
 
     @FXML
+    private Label numeroQuarto;
+
+    @FXML
+    private Label precoEstadia;
+
+    @FXML
+    private Label dataEntrada;
+
+    @FXML
+    private Label dataSaida;
+
+    @FXML
+    private Label numeroCamasDeCasal;
+
+    @FXML
+    private Label numeroCamasDeSolteiro;
+
+    @FXML
     Button botaoConfirmarReserva;
 
     @FXML
     Button botaoVoltar;
+
+    @FXML
+    private void initialize() {
+
+        // Atualizar os campos pelo contexto de Reserva
+        ReservationContext ctx = ReservationContext.getInstance();
+        Quarto quarto = ctx.getQuartoSelecionado();
+
+        numeroQuarto.setText("Quarto " + String.format("%03d", quarto.getNumero()));
+        precoEstadia.setText("R$" + quarto.getDiaria());
+        dataEntrada.setText("Data de Entrada: " + String.format("%02d", ctx.getDataEntrada().getDayOfMonth()) + "/"
+                + String.format("%02d", ctx.getDataEntrada().getMonthValue()) + "/" + ctx.getDataEntrada().getYear());
+        dataSaida.setText("Data de Saída: " + String.format("%02d", ctx.getDataSaida().getDayOfMonth()) + "/"
+                + String.format("%02d", ctx.getDataSaida().getMonthValue()) + "/" + ctx.getDataSaida().getYear());
+        numeroCamasDeCasal.setText("Camas de Casal: " + String.format("%02d", quarto.getQntdCamasCasal()));
+        numeroCamasDeSolteiro.setText("Camas de Solteiro: " + String.format("%02d", quarto.getQntdCamasSolteiro()));
+    }
 
     @FXML
     private void confirmarReserva(ActionEvent event) {
