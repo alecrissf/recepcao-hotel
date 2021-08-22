@@ -47,7 +47,7 @@ public class Sistema {
 
             // Remover as reservas que estejam concluídas a mais do que 3 dias
             if ((reservaSalva.getConcluida() || reservaSalva.getCancelada())
-                    && ((int) ChronoUnit.DAYS.between(LocalDate.of(2021, 8, 18), reservaSalva.getDataSaida())
+                    && ((int) ChronoUnit.DAYS.between(LocalDate.now(), reservaSalva.getDataSaida())
                             + 1 > 2)) {
                 this.reservas.remove(reservaSalva.getId());
             }
