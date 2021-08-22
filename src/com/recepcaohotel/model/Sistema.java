@@ -9,6 +9,8 @@ import java.util.Set;
 public class Sistema {
     // Pensar em como transformar essas coisas para serem lidas de arquivos
 
+    Admin ad = new Admin("Admin", "123");
+
     // Quartos serão dicionários de numeroQuarto - Quarto
     private Map<Integer, Quarto> quartos;
     private Map<Integer, Reserva> reservas;
@@ -22,6 +24,8 @@ public class Sistema {
         this.quartos = new HashMap<>();
         this.reservas = new HashMap<>();
         this.usuarios = new HashMap<>();
+
+        usuarios.put(ad.getNomeUsuario(), ad);
 
         // Pegar informações de arquivos para preencher as listas.
         this.recuperarDados();

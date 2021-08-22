@@ -69,11 +69,13 @@ public class ItemQuartoController {
         ReservationContext ctx = ReservationContext.getInstance();
 
         // Atualizar texto dos campos com base no objeto quarto.
-        numeroQuarto.setText(String.valueOf(quarto.getNumero()));
-        numeroCamasDeCasal.setText("Camas de Casal: " + quarto.getQntdCamasCasal());
-        numeroCamasDeSolteiro.setText("Camas de Solteiro: " + quarto.getQntdCamasSolteiro());
-        dataEntrada.setText(ctx.getDataEntrada().toString());
-        dataSaida.setText(ctx.getDataSaida().toString());
+        numeroQuarto.setText("Quarto " + String.format("%03d", quarto.getNumero()));
+        numeroCamasDeCasal.setText("Camas de Casal: " + String.format("%02d", quarto.getQntdCamasCasal()));
+        numeroCamasDeSolteiro.setText("Camas de Solteiro: " + String.format("%02d", quarto.getQntdCamasSolteiro()));
+        dataEntrada.setText("Data de Entrada: " + ctx.getDataEntrada().getDayOfMonth() + "/"
+                + ctx.getDataEntrada().getMonthValue() + "/" + ctx.getDataEntrada().getYear());
+        dataSaida.setText("Data de Saída: " + ctx.getDataEntrada().getDayOfMonth() + "/"
+                + ctx.getDataEntrada().getMonthValue() + "/" + ctx.getDataEntrada().getYear());
         precoEstadia.setText("R$" + quarto.getDiaria());
     }
 
