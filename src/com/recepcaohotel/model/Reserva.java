@@ -1,10 +1,11 @@
 package com.recepcaohotel.model;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Random;
 import java.time.temporal.ChronoUnit;
 
-public class Reserva {
+public class Reserva implements Serializable {
     private int id;
     private LocalDate dataEntrada;
     private LocalDate dataSaida;

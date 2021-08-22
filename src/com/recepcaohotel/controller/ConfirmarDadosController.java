@@ -54,11 +54,12 @@ public class ConfirmarDadosController {
 
     @FXML
     private void initialize() {
-
         // Atualizar os campos pelo contexto de Reserva
         ReservationContext ctx = ReservationContext.getInstance();
         Quarto quarto = ctx.getQuartoSelecionado();
-
+        if (quarto == null) {
+            return;
+        }
         numeroQuarto.setText("Quarto " + String.format("%03d", quarto.getNumero()));
         precoEstadia.setText("R$" + String.format("%.2f", quarto.getDiaria()).replace(".", ","));
         dataEntrada.setText("Data de Entrada: " + String.format("%02d", ctx.getDataEntrada().getDayOfMonth()) + "/"
