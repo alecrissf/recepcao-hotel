@@ -47,7 +47,7 @@ public class EstadiaController {
 
             // Verficar se A data de Entrada é maior do que a de Saída
             if (ctx.getDataEntrada().isAfter(ctx.getDataSaida())) {
-                mostrarErroCampos("'Data de Entrada' maior do que 'Data de Saída'.");
+                mostrarErroCampos("'Data de Entrada' posterior a 'Data de Saída'.");
                 return;
             }
 
