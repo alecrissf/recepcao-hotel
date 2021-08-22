@@ -34,7 +34,6 @@ public class BuscaQuartosController {
 
         // Percorre todos as reservas comparado a data de entrada e saída do context
         for (Reserva reserva : listaReservas) {
-
             // Pular as Reservas Concluídas (Utilizar 'atualizar' reservas tbm)
             if (reserva.getConcluida()) {
                 continue;
@@ -45,7 +44,8 @@ public class BuscaQuartosController {
             if (ctx.getDataEntrada().isBefore(reserva.getDataSaida())
                     && (ctx.getDataEntrada().isAfter(reserva.getDataEntrada())
                             || ctx.getDataEntrada().isEqual(reserva.getDataEntrada()))) {
-                listaQuartos.remove(reserva.getQuarto());
+                // Remoção testando conteúdo
+                listaQuartos.removeIf(quarto -> quarto.getNumero() == reserva.getQuarto().getNumero());
             }
 
             // Caso em que a data de saida do contexto está entre a entrada e saída da

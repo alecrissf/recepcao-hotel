@@ -20,8 +20,6 @@ public class App extends Application {
     public static void main(String[] args) {
         // Criar a instância de Sistema.
         systemInstance = new Sistema();
-        Quarto q1 = new Quarto(1, 2, 3, 120);
-        systemInstance.adicionarQuarto(q1);
         launch(args);
     }
 

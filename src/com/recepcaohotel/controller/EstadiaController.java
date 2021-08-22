@@ -1,6 +1,7 @@
 package com.recepcaohotel.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import com.recepcaohotel.controller.context.ReservationContext;
 
@@ -48,6 +49,11 @@ public class EstadiaController {
             // Verficar se A data de Entrada é maior do que a de Saída
             if (ctx.getDataEntrada().isAfter(ctx.getDataSaida())) {
                 mostrarErroCampos("'Data de Entrada' posterior a 'Data de Saída'.");
+                return;
+            }
+            // Verficar se a data de entrada é anterior o dia de hoje
+            if (ctx.getDataEntrada().isBefore(LocalDate.now())) {
+                mostrarErroCampos("'Data de Entrada' anterior ao Dia de Hoje");
                 return;
             }
 

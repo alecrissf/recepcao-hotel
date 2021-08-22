@@ -37,10 +37,11 @@ public class ADMNovoQuartoController {
     private void confirmar(ActionEvent event) {
         // TODO: Mudar as informações usando a instância da classe sistema.
 
-        // OBS.: se houver campos vazios não fazer nada e mostrar uma mensagem para o usuário.
+        // OBS.: se houver campos vazios não fazer nada e mostrar uma mensagem para o
+        // usuário.
 
         try {
-            //Verificar os campos antes de usá-los.
+            // Verificar os campos antes de usá-los.
             if (campoNumQuarto.getText().isBlank() || campoQtdCamasCasal.getText().isBlank()
                     || campoQtdCamasSolteiro.getText().isBlank() || campoValorDiaria.getText().isBlank()) {
 
@@ -51,18 +52,17 @@ public class ADMNovoQuartoController {
             int numQuarto = Integer.parseInt(this.campoNumQuarto.getText());
             int qntCamaCasal = Integer.parseInt(this.campoQtdCamasCasal.getText());
             int qntCamaSolteiro = Integer.parseInt(this.campoQtdCamasSolteiro.getText());
-            float valorDiaria = Float.parseFloat(this.campoValorDiaria.getText());
+            float valorDiaria = Float.parseFloat(this.campoValorDiaria.getText().replace(",", "."));
 
             Quarto quarto = new Quarto(numQuarto, qntCamaCasal, qntCamaSolteiro, valorDiaria);
             App.getSystemInstance().adicionarQuarto(quarto);
         }
 
-        //Erro caso seja digitado algo que não possa ser convertido para números.
+        // Erro caso seja digitado algo que não possa ser convertido para números.
         catch (NumberFormatException exception) {
             Alert alerta = new Alert(Alert.AlertType.ERROR);
             alerta.setTitle("Erro de preenchimento");
-            alerta.setContentText(
-                    "Por favor, digite apenas números nos espaços e, na diária, digite apenas o valor dividindo os centavos com um ponto (Ex: 548.25)");
+            alerta.setContentText("Por favor, digite apenas números nos espaços");
             alerta.showAndWait();
             return;
         }
@@ -92,7 +92,7 @@ public class ADMNovoQuartoController {
 
         Alert alerta = new Alert(AlertType.ERROR);
         alerta.setTitle("Erro de preenchimento");
-        alerta.setContentText("Por favor, não deixe nenhum campo vazio, todos devem ser preenchidos.");
+        alerta.setContentText("Por favor, não deixe nenhum campo vazio.");
         alerta.showAndWait();
     }
 }
