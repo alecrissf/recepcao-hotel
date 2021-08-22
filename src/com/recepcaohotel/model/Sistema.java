@@ -150,11 +150,11 @@ public class Sistema {
     }
 
     private void recuperarQuartos() {
-        this.quartos = Permanencia.recuperarDados(CAMINHO_PADRAO + ARQ_QUARTOS);
+        this.quartos = Permanencia.<Integer, Quarto>recuperarDados(CAMINHO_PADRAO + ARQ_QUARTOS);
     }
 
     private void recuperarReservas() {
-        this.reservas = Permanencia.recuperarDados(CAMINHO_PADRAO + ARQ_RESERVAS);
+        this.reservas = Permanencia.<Integer, Reserva>recuperarDados(CAMINHO_PADRAO + ARQ_RESERVAS);
     }
 
     public void salvarDados() {

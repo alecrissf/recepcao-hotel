@@ -14,6 +14,15 @@ public class Permanencia {
         Map<K, V> dados = new HashMap<>();
         // Abrir o arquivo.
         File arq = new File(caminho);
+        if (!arq.exists()) {
+            try {
+                ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(arq));
+                out.writeObject(dados);
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
         try {
             ObjectInputStream in = new ObjectInputStream(new FileInputStream(arq));
             // Percorrer o arquivo.
