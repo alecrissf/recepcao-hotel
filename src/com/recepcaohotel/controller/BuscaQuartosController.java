@@ -28,8 +28,6 @@ public class BuscaQuartosController {
         ReservationContext ctx = ReservationContext.getInstance();
         Sistema s = App.getSystemInstance();
 
-        // TODO: Discutir onde é realizado o tratamento de saída < entrada??
-
         // Inicializar a lista de quartos.
         Collection<Quarto> listaQuartos = s.consultarQuartos();
         Collection<Reserva> listaReservas = s.consultarReservas();

@@ -1,6 +1,7 @@
 package com.recepcaohotel.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 
 import com.recepcaohotel.controller.context.AdminContext;
 import com.recepcaohotel.model.DetalhesEstadia;
@@ -43,10 +44,12 @@ public class ADMEditarReservaController {
     private Button botaoCancelar;
 
     @FXML
-    private void inicializar() {
+    private void initialize() {
         // Colocar o valor atual da data de saída em textoDataSaida.
         Reserva reserva = AdminContext.getInstance().getReservaSelecionada();
-        texoDataSaida.setText(reserva.getDataSaida().toString());
+        texoDataSaida.setText(String.format("%02d", reserva.getDataSaida().getDayOfMonth()) + "/"
+                + String.format("%02d", reserva.getDataSaida().getMonthValue()) + "/"
+                + reserva.getDataSaida().getYear());
         campoDataSaida.setValue(reserva.getDataSaida());
     }
 
@@ -63,26 +66,47 @@ public class ADMEditarReservaController {
         // Recuperar a reserva selecionada.
         Reserva reserva = AdminContext.getInstance().getReservaSelecionada();
 
-        // Colocar o valor de campo data saida na reserva.
+        // Testar a data de saída e colocar o valor de campo data saida na reserva.
+        if (campoDataSaida.getValue().isBefore(LocalDate.now())) {
+            mostrarErroCampos("A 'Data de Saída' anterior a 'Data de Hoje'.");
+            return;
+        }
+
+        if (campoDataSaida.getValue().isBefore(reserva.getDataEntrada())) {
+            mostrarErroCampos("A 'Data de Saída' anterior a 'Data de Entrada'.'");
+            return;
+        }
+
         reserva.setDataSaida(campoDataSaida.getValue());
 
         DetalhesEstadia de = reserva.getDetalhesEstadia();
 
         // Caso ambos os campos estejam preenchidos editar o objeto detalhes estadia.
         if (!qtdServicoQuarto.isBlank() && !valorServicoQuarto.isBlank()) {
-            de.addServicoDeQuarto(Float.parseFloat(valorServicoQuarto), Integer.parseInt(qtdServicoQuarto));
+            try {
+                de.addServicoDeQuarto(Float.parseFloat(valorServicoQuarto.replace(",", ".")),
+                        Integer.parseInt(qtdServicoQuarto));
+            } catch (NumberFormatException e) {
+                mostrarErroCampos("Verifique os dados do \"Serviço de Quarto\".");
+                return;
+            }
         } else if (!(qtdServicoQuarto.isBlank() && valorServicoQuarto.isBlank())) {
-            mostrarErroCampos(
-                    "Os campos \"Quantidade Serviço de Quarto\" e \"Valor Serviço de Quarto\" devem estar ambos preenchidos.");
+            mostrarErroCampos("Ambos os campos de \"Serviço de Quarto\" devem estar preenchidos.");
             return;
         }
 
         // Caso ambos os campos estejam preenchidos editar o objeto detalhes estadia.
         if (!qtdConsumoFrigobar.isBlank() && !valorConsumoFrigobar.isBlank()) {
-            de.addFrigobar(Float.parseFloat(valorConsumoFrigobar), Integer.parseInt(qtdConsumoFrigobar));
+            try {
+                de.addFrigobar(Float.parseFloat(valorConsumoFrigobar.replace(",", ".")),
+                        Integer.parseInt(qtdConsumoFrigobar));
+            } catch (Exception e) {
+                mostrarErroCampos("Verifique os dados do \"Consumo Frigobar\".");
+                return;
+            }
+            // TODO: Verificar o tamanho do texto na caixa de mensagem
         } else if (!(qtdConsumoFrigobar.isBlank() && valorConsumoFrigobar.isBlank())) {
-            mostrarErroCampos(
-                    "Os campos \"Quantidade Consumo Frigobar\" e \"Valor Consumo Frigobar\" devem estar ambos preenchidos.");
+            mostrarErroCampos("Ambos os campos de \"Consumo Frigobar\" devem estar preenchidos.");
             return;
         }
 

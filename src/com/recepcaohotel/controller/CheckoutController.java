@@ -3,14 +3,17 @@ package com.recepcaohotel.controller;
 import java.io.IOException;
 
 import com.recepcaohotel.app.App;
+import com.recepcaohotel.model.Reserva;
 import com.recepcaohotel.model.Sistema;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class CheckoutController {
     @FXML
@@ -26,6 +29,18 @@ public class CheckoutController {
     private void confirmarCheckout(ActionEvent event) {
         // Fazer checkout.
         Sistema s = App.getSystemInstance();
+
+        try {
+            Reserva r = s.getReserva(Integer.parseInt(campoCodigoReserva.getText()));
+            if (r == null) {
+                mostrarErroCampos("Tente novamente, ou dirija-se a recepção.");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            mostrarErroCampos("O código da reserva é composto apenas por números.");
+            return;
+        }
+
         s.realizarCheckout(Integer.parseInt(campoCodigoReserva.getText()));
 
         if (event.getSource() == botaoConfirmarCheckout) {
@@ -48,5 +63,12 @@ public class CheckoutController {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void mostrarErroCampos(String msg) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Reserva não Encontrada");
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }
