@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.recepcaohotel.app.App;
 import com.recepcaohotel.controller.context.ReservationContext;
+import com.recepcaohotel.model.Cliente;
 import com.recepcaohotel.model.Quarto;
 import com.recepcaohotel.model.Reserva;
 import com.recepcaohotel.model.Sistema;
@@ -94,8 +95,10 @@ public class ConfirmarDadosController {
         ctx.setNome(nome);
         ctx.setEmail(email);
         ctx.setTelefone(telefone);
+        // Criar objeto do cliente.
+        Cliente cliente = new Cliente(nome, email, telefone);
         // Criar a reserva, guardar informações no contexto.
-        Reserva reserva = new Reserva(ctx.getQuartoSelecionado(), ctx.getDataEntrada(), ctx.getDataSaida());
+        Reserva reserva = new Reserva(ctx.getQuartoSelecionado(), cliente, ctx.getDataEntrada(), ctx.getDataSaida());
         // Guardar a reserva no contexto.
         ctx.setReservaCriada(reserva);
         // Cadastrar a reserva.

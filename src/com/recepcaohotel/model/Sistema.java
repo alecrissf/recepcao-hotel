@@ -2,6 +2,7 @@ package com.recepcaohotel.model;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.io.File;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.LinkedHashSet;
@@ -35,6 +36,10 @@ public class Sistema {
         this.usuarios.put(adm.getNomeUsuario(), adm);
 
         // Pegar informações de arquivos para preencher as listas.
+        File caminho = new File(CAMINHO_PADRAO);
+        if (!caminho.exists()) {
+            caminho.mkdirs();
+        }
         this.recuperarDados();
     }
 

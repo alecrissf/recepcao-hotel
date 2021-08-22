@@ -35,7 +35,7 @@ public class ADMNovoQuartoController {
 
     @FXML
     private void confirmar(ActionEvent event) {
-        // TODO: Mudar as informações usando a instância da classe sistema.
+        // Mudar as informações usando a instância da classe sistema.
 
         // OBS.: se houver campos vazios não fazer nada e mostrar uma mensagem para o
         // usuário.
@@ -89,7 +89,6 @@ public class ADMNovoQuartoController {
     }
 
     private void mostrarErroVazio() {
-
         Alert alerta = new Alert(AlertType.ERROR);
         alerta.setTitle("Erro de preenchimento");
         alerta.setContentText("Por favor, não deixe nenhum campo vazio.");

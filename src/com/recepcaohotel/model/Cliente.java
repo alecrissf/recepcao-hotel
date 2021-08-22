@@ -9,6 +9,7 @@ public class Cliente implements Serializable {
     private String telefone;
 
     public Cliente() {
+        this(null, null, null);
     }
 
     public Cliente(String nome, String email, String telefone) {
