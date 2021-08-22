@@ -13,9 +13,9 @@
   </VBox>
    <VBox alignment="center" HBox.hgrow="always">
     <Label text="Cliente" styleClass="text" />
-    <Label fx:id="nomeUsuario" styleClass="text-names" />
-    <Label fx:id="email" styleClass="text-names" />
-    <Label fx:id="telefone" styleClass="text-names" />
+    <Label fx:id="nomeUsuario" styleClass="text-names" alignment="center" maxWidth="200" />
+    <Label fx:id="email" styleClass="text-names" alignment="center" maxWidth="200" />
+    <Label fx:id="telefone" styleClass="text-names" alignment="center" maxWidth="200" />
   </VBox>
   <VBox alignment="center" HBox.hgrow="always">
     <Label text="Total a Pagar" styleClass="pricing-text" />
