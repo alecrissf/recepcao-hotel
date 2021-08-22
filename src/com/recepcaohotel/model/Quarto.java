@@ -1,6 +1,8 @@
 package com.recepcaohotel.model;
 
-public class Quarto {
+import java.io.Serializable;
+
+public class Quarto implements Serializable {
 
     private int numero;
     private int qntdCamasCasal;
@@ -9,7 +11,7 @@ public class Quarto {
     private boolean isDisponivel;
 
     public Quarto() {
-
+        this(0, 0, 0, 0);
     }
 
     public Quarto(int numero, int qntdCamasCasal, int qntdCamasSolteiro, float diaria) {

@@ -2,6 +2,7 @@ package com.recepcaohotel.app;
 
 import java.io.IOException;
 
+import com.recepcaohotel.model.Quarto;
 import com.recepcaohotel.model.Sistema;
 
 import javafx.application.Application;
@@ -17,8 +18,10 @@ public class App extends Application {
     private static Sistema systemInstance = null;
 
     public static void main(String[] args) {
-        // TODO: adaptar quando a classe Sistema for implementada.
+        // Criar a instância de Sistema.
         systemInstance = new Sistema();
+        Quarto q1 = new Quarto(1, 2, 3, 120);
+        systemInstance.adicionarQuarto(q1);
         launch(args);
     }
 

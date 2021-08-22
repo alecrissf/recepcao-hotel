@@ -1,11 +1,13 @@
 package com.recepcaohotel.controller;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 
+import com.recepcaohotel.app.App;
+import com.recepcaohotel.controller.context.ReservationContext;
 import com.recepcaohotel.model.Quarto;
+import com.recepcaohotel.model.Reserva;
+import com.recepcaohotel.model.Sistema;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,10 +25,51 @@ public class BuscaQuartosController {
 
     @FXML
     private void initialize() {
+        ReservationContext ctx = ReservationContext.getInstance();
+        Sistema s = App.getSystemInstance();
+
         // Inicializar a lista de quartos.
-        // OBS.: versão temporária, sujeita a modificações futuras.
-        Quarto demo[] = { new Quarto(), new Quarto(), new Quarto() };
-        atualizarListaDeQuartos(new ArrayList<>(Arrays.asList(demo)));
+        Collection<Quarto> listaQuartos = s.consultarQuartos();
+        Collection<Reserva> listaReservas = s.consultarReservas();
+
+        // Percorre todos as reservas comparado a data de entrada e saída do context
+        for (Reserva reserva : listaReservas) {
+
+            // Pular as Reservas Concluídas (Utilizar 'atualizar' reservas tbm)
+            if (reserva.getConcluida()) {
+                continue;
+            }
+
+            // Caso em que a data de entrada do contexto está entre a entrada e saida da
+            // reserva
+            if (ctx.getDataEntrada().isBefore(reserva.getDataSaida())
+                    && (ctx.getDataEntrada().isAfter(reserva.getDataEntrada())
+                            || ctx.getDataEntrada().isEqual(reserva.getDataEntrada()))) {
+                listaQuartos.remove(reserva.getQuarto());
+            }
+
+            // Caso em que a data de saida do contexto está entre a entrada e saída da
+            // reserva
+            else if (ctx.getDataSaida().isAfter(reserva.getDataEntrada())
+                    && (ctx.getDataSaida().isBefore(reserva.getDataSaida())
+                            || ctx.getDataSaida().isEqual(reserva.getDataSaida()))) {
+                listaQuartos.remove(reserva.getQuarto());
+            }
+
+            // Caso em que a entrada do contexto é menor que a entrada da reserva
+            // e que a saída do contexto é maior que a saída da reserva
+            else if (ctx.getDataEntrada().isBefore(reserva.getDataEntrada())
+                    && ctx.getDataSaida().isAfter(reserva.getDataSaida())) {
+                listaQuartos.remove(reserva.getQuarto());
+            }
+
+            // Caso em que são exatamente iguais ambdas
+            else if (ctx.getDataEntrada().isEqual(reserva.getDataEntrada())
+                    && ctx.getDataSaida().isEqual(reserva.getDataSaida())) {
+                listaQuartos.remove(reserva.getQuarto());
+            }
+        }
+        atualizarListaDeQuartos(listaQuartos);
     }
 
     @FXML
@@ -45,7 +88,6 @@ public class BuscaQuartosController {
         if (containerQuartos == null) {
             return;
         }
-
         containerQuartos.getChildren().clear();
 
         for (Quarto quarto : quartos) {

@@ -8,7 +8,7 @@
 
 <AnchorPane fx:controller="com.recepcaohotel.controller.ADMEditarQuartoController" xmlns:fx="http://javafx.com/fxml" stylesheets="@../css/admin-styles.css" styleClass="wrapper-container">
   <StackPane AnchorPane.topAnchor="28" styleClass="header">
-    <Label alignment="center" text="Novo Quarto" styleClass="header-title" />
+    <Label alignment="center" text="Editar Quarto" styleClass="header-title" />
   </StackPane>
   <StackPane alignment="center" AnchorPane.topAnchor="0" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0">
     <VBox fillWidth="never" alignment="center" spacing="10" styleClass="main-container, edit-registration">

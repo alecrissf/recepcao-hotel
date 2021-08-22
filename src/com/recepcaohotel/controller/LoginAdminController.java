@@ -2,13 +2,18 @@ package com.recepcaohotel.controller;
 
 import java.io.IOException;
 
+import com.recepcaohotel.app.App;
+import com.recepcaohotel.model.Sistema;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 
 public class LoginAdminController {
     @FXML
@@ -25,7 +30,22 @@ public class LoginAdminController {
 
     @FXML
     private void entrar(ActionEvent event) {
-        // TODO: guardar informações necessárias no contexto do admin.
+        // Verificar campos.
+        if (campoUsuario.getText().isBlank()) {
+            mostrarErroCampos();
+            return;
+        }
+        if (campoSenha.getText().isBlank()) {
+            mostrarErroCampos();
+            return;
+        }
+
+        // Fazer o login do admin.
+        Sistema s = App.getSystemInstance();
+        if (!s.autenticar(campoUsuario.getText().strip(), campoSenha.getText().strip())) {
+            mostrarErroLogin();
+            return;
+        }
 
         if (event.getSource() == botaoEntrar) {
             try {
@@ -47,5 +67,19 @@ public class LoginAdminController {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void mostrarErroLogin() {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erro de login");
+        alert.setContentText("Nome de usuário ou senha inválidos.");
+        alert.showAndWait();
+    }
+
+    private void mostrarErroCampos() {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erro de campos");
+        alert.setContentText("Os campos devem ser preenchidos.");
+        alert.showAndWait();
     }
 }

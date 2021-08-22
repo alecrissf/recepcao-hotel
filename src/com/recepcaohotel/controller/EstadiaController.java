@@ -1,7 +1,8 @@
 package com.recepcaohotel.controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
+
+import com.recepcaohotel.controller.context.ReservationContext;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +10,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 
 public class EstadiaController {
     @FXML
@@ -25,16 +28,29 @@ public class EstadiaController {
 
     @FXML
     private void initialize() {
-        entradaDatePicker.setValue(LocalDate.now());
-        saidaDatePicker.setValue(LocalDate.now());
+        ReservationContext ctx = ReservationContext.getInstance();
+
+        entradaDatePicker.setValue(ctx.getDataEntrada());
+        saidaDatePicker.setValue(ctx.getDataSaida());
     }
 
     @FXML
     private void buscarQuartos(ActionEvent event) {
-        // TODO: coletar as informações dos campos de data e guardar no contexto de reserva.
+        // Coletar as informações dos campos de data e guardar no contexto de reserva.
+        ReservationContext ctx = ReservationContext.getInstance();
+
+        ctx.setDataEntrada(entradaDatePicker.getValue());
+        ctx.setDataSaida(saidaDatePicker.getValue());
 
         // Ir para a página de escolha de quartos.
         if (event.getSource() == botaoBuscarQuartos) {
+
+            // Verficar se A data de Entrada é maior do que a de Saída
+            if (ctx.getDataEntrada().isAfter(ctx.getDataSaida())) {
+                mostrarErroCampos("'Data de Entrada' posterior a 'Data de Saída'.");
+                return;
+            }
+
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("../view/fxml/BuscaQuartos.fxml"));
                 botaoBuscarQuartos.getScene().setRoot(root);
@@ -46,6 +62,9 @@ public class EstadiaController {
 
     @FXML
     private void voltar(ActionEvent event) {
+        // Resetar o contexto de reserva.
+        ReservationContext.finishContext();
+        // Voltar para a página principal.
         if (event.getSource() == botaoVoltar) {
             try {
                 Parent root = FXMLLoader.load(getClass().getResource("../view/fxml/Home.fxml"));
@@ -54,5 +73,12 @@ public class EstadiaController {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void mostrarErroCampos(String msg) {
+        Alert alert = new Alert(AlertType.ERROR);
+        alert.setTitle("Erro de campos");
+        alert.setContentText(msg);
+        alert.showAndWait();
     }
 }
