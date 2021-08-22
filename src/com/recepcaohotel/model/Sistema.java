@@ -6,8 +6,14 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.recepcaohotel.model.utils.Permanencia;
+
 public class Sistema {
-    // Pensar em como transformar essas coisas para serem lidas de arquivos
+    // Constantes dos nomes dos arquivos.
+    public static final String CAMINHO_PADRAO = "./data/";
+    public static final String ARQ_QUARTOS = "quartos.list";
+    public static final String ARQ_RESERVAS = "reservas.list";
+    public static final String ARQ_USUARIOS = "usuarios.list";
 
     // Quartos serão dicionários de numeroQuarto - Quarto
     private Map<Integer, Quarto> quartos;
@@ -23,6 +29,9 @@ public class Sistema {
         this.reservas = new HashMap<>();
         this.usuarios = new HashMap<>();
 
+        Admin adm = new Admin("admin", "123456");
+        this.usuarios.put(adm.getNomeUsuario(), adm);
+
         // Pegar informações de arquivos para preencher as listas.
         this.recuperarDados();
     }
@@ -33,6 +42,8 @@ public class Sistema {
 
         // Como se espera um número único de Id, não devem haver problemas na inserção
         reservas.put(reserva.getId(), reserva);
+
+        this.salvarReservas();
     }
 
     public void cancelarReserva(int idReserva) {
@@ -44,6 +55,8 @@ public class Sistema {
         reserva.getQuarto().setDisponivel(true);
         reserva.setCancelada(true);
         // reservas.remove(idReserva).getQuarto().setDisponivel(true);
+
+        this.salvarReservas();
     }
 
     public void adicionarQuarto(Quarto quarto) {
@@ -51,10 +64,14 @@ public class Sistema {
         // A ideia é que a inserção de um novo quarto com mesmo número, substitua o
         // anterior
         quartos.put(quarto.getNumero(), quarto);
+
+        this.salvarQuartos();
     }
 
     public void removerQuarto(int numeroQuarto) {
         quartos.remove(numeroQuarto);
+
+        this.salvarQuartos();
     }
 
     public void setIsAutenticado(boolean isAutenticado) {
@@ -95,6 +112,8 @@ public class Sistema {
         reserva.setConcluida(true);
         // Adicionar também a lógica para calacular o preço total
         // reservas.remove(idReserva);
+
+        this.salvarReservas();
     }
 
     public Collection<Quarto> consultarQuartos() {
@@ -126,11 +145,29 @@ public class Sistema {
     }
 
     public void recuperarDados() {
-        // TODO: Lógica para recuperar os dados dos arquivos salvos.
+        this.recuperarQuartos();
+        this.recuperarReservas();
+    }
+
+    private void recuperarQuartos() {
+        this.quartos = Permanencia.<Integer, Quarto>recuperarDados(CAMINHO_PADRAO + ARQ_QUARTOS);
+    }
+
+    private void recuperarReservas() {
+        this.reservas = Permanencia.<Integer, Reserva>recuperarDados(CAMINHO_PADRAO + ARQ_RESERVAS);
     }
 
     public void salvarDados() {
-        // TODO: Lógica para salvar os dados em arquivos.
+        this.salvarQuartos();
+        this.salvarReservas();
+    }
+
+    private void salvarQuartos() {
+        Permanencia.salvarDados(CAMINHO_PADRAO + ARQ_QUARTOS, this.quartos);
+    }
+
+    private void salvarReservas() {
+        Permanencia.salvarDados(CAMINHO_PADRAO + ARQ_RESERVAS, this.reservas);
     }
 
     // Método apenas para testar todos os dados armazenados como Quartos

@@ -8,6 +8,7 @@ javac^
  --module-path ./lib/javafx-sdk-11.0.2/lib^
  --add-modules javafx.controls,javafx.fxml^
  ./src/com/recepcaohotel/model/*.java^
+ ./src/com/recepcaohotel/model/utils/*.java^
  ./src/com/recepcaohotel/controller/context/*.java^
  ./src/com/recepcaohotel/controller/*.java^
  ./src/com/recepcaohotel/app/*.java

@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.recepcaohotel.app.App;
 import com.recepcaohotel.controller.context.ReservationContext;
+import com.recepcaohotel.model.Quarto;
 import com.recepcaohotel.model.Reserva;
 import com.recepcaohotel.model.Sistema;
 
@@ -14,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class ConfirmarDadosController {
@@ -27,10 +29,43 @@ public class ConfirmarDadosController {
     private TextField campoTelefone;
 
     @FXML
+    private Label numeroQuarto;
+
+    @FXML
+    private Label precoEstadia;
+
+    @FXML
+    private Label dataEntrada;
+
+    @FXML
+    private Label dataSaida;
+
+    @FXML
+    private Label numeroCamasDeCasal;
+
+    @FXML
+    private Label numeroCamasDeSolteiro;
+
+    @FXML
     Button botaoConfirmarReserva;
 
     @FXML
     Button botaoVoltar;
+
+    @FXML
+    private void initialize() {
+        ReservationContext ctx = ReservationContext.getInstance();
+        Quarto quarto = ctx.getQuartoSelecionado();
+        if (quarto == null) {
+            return;
+        }
+        dataEntrada.setText(ctx.getDataEntrada().toString());
+        dataSaida.setText(ctx.getDataSaida().toString());
+        numeroQuarto.setText("Quarto " + String.format("%03d", quarto.getNumero()));
+        precoEstadia.setText("R$" + String.format("%.2f", quarto.getDiaria()).replace(".", ","));
+        numeroCamasDeCasal.setText("Camas de Casal: " + String.format("%02d", quarto.getQntdCamasCasal()));
+        numeroCamasDeSolteiro.setText("Camas de Solteiro: " + String.format("%02d", quarto.getQntdCamasSolteiro()));
+    }
 
     @FXML
     private void confirmarReserva(ActionEvent event) {
