@@ -170,6 +170,14 @@ public class Sistema {
         Permanencia.salvarDados(CAMINHO_PADRAO + ARQ_RESERVAS, this.reservas);
     }
 
+    public Quarto getQuarto(int num) {
+        return quartos.get(num);
+    }
+
+    public Reserva getReserva(int id) {
+        return reservas.get(id);
+    }
+
     // Método apenas para testar todos os dados armazenados como Quartos
     public void imprimirQuartos(Collection<Quarto> quartos) {
         for (Quarto quarto : quartos) {
