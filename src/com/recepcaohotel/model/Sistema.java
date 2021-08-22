@@ -11,9 +11,9 @@ import com.recepcaohotel.model.utils.Permanencia;
 public class Sistema {
     // Constantes dos nomes dos arquivos.
     public static final String CAMINHO_PADRAO = "./";
-    public static final String ARQ_QUARTOS = "quartos.csv";
-    public static final String ARQ_RESERVAS = "reservas.csv";
-    public static final String ARQ_USUARIOS = "usuarioa.csv";
+    public static final String ARQ_QUARTOS = "quartos.list";
+    public static final String ARQ_RESERVAS = "reservas.list";
+    public static final String ARQ_USUARIOS = "usuarios.list";
 
     // Quartos serão dicionários de numeroQuarto - Quarto
     private Map<Integer, Quarto> quartos;
