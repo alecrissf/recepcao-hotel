@@ -100,6 +100,12 @@ public class ADMItemReservaController {
             mostrarErro();
             return false;
         }
+        if (reserva.getCancelada()) {
+            return false;
+        }
+        if (reserva.getConcluida()) {
+            return false;
+        }
         // Guardar as informações no contexto de admin.
         AdminContext ctx = AdminContext.getInstance();
         ctx.setReservaSelecionada(reserva);
