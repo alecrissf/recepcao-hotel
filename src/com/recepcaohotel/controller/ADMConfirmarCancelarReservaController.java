@@ -41,9 +41,13 @@ public class ADMConfirmarCancelarReservaController {
         // 'finalizada'
         Reserva r = s.getReserva(ctx.getReservaSelecionada().getId());
 
-        r.setDataSaida(LocalDate.now());
-        r.setCancelada(true);
-        r.setConcluida(true);
+        if (LocalDate.now().isBefore(r.getDataEntrada())) {
+            r.setDataSaida(r.getDataEntrada());
+        } else {
+            r.setDataSaida(LocalDate.now());
+        }
+
+        s.cancelarReserva(r.getId());
 
         if (event.getSource() == botaoSim) {
             voltar(botaoSim);

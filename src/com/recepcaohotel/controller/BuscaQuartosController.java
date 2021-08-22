@@ -35,7 +35,7 @@ public class BuscaQuartosController {
         // Percorre todos as reservas comparado a data de entrada e saída do context
         for (Reserva reserva : listaReservas) {
             // Pular as Reservas Concluídas (Utilizar 'atualizar' reservas tbm)
-            if (reserva.getConcluida()) {
+            if (reserva.getConcluida() || reserva.getCancelada()) {
                 continue;
             }
 

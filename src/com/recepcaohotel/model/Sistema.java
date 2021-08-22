@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
@@ -47,8 +46,8 @@ public class Sistema {
         for (Reserva reservaSalva : consultarReservas()) {
 
             // Remover as reservas que estejam concluídas a mais do que 3 dias
-            if (reservaSalva.getConcluida()
-                    && ((int) ChronoUnit.DAYS.between(LocalDate.now(), reservaSalva.getDataSaida())
+            if ((reservaSalva.getConcluida() || reservaSalva.getCancelada())
+                    && ((int) ChronoUnit.DAYS.between(LocalDate.of(2021, 8, 18), reservaSalva.getDataSaida())
                             + 1 > 2)) {
                 this.reservas.remove(reservaSalva.getId());
             }
@@ -68,7 +67,6 @@ public class Sistema {
         }
         reserva.getQuarto().setDisponivel(true);
         reserva.setCancelada(true);
-        reserva.setConcluida(true);
         // reservas.remove(idReserva).getQuarto().setDisponivel(true);
 
         this.salvarReservas();

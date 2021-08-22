@@ -2,7 +2,6 @@ package com.recepcaohotel.app;
 
 import java.io.IOException;
 
-import com.recepcaohotel.model.Quarto;
 import com.recepcaohotel.model.Sistema;
 
 import javafx.application.Application;
