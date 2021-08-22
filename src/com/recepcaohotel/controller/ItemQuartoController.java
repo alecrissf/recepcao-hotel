@@ -70,7 +70,7 @@ public class ItemQuartoController {
 
         // Atualizar texto dos campos com base no objeto quarto.
         numeroQuarto.setText("Quarto " + String.format("%03d", quarto.getNumero()));
-        precoEstadia.setText("R$" + quarto.getDiaria());
+        precoEstadia.setText("R$" + String.format("%.2f", quarto.getDiaria()).replace(".", ","));
         dataEntrada.setText("Data de Entrada: " + String.format("%02d", ctx.getDataEntrada().getDayOfMonth()) + "/"
                 + String.format("%02d", ctx.getDataEntrada().getMonthValue()) + "/" + ctx.getDataEntrada().getYear());
         dataSaida.setText("Data de Saída: " + String.format("%02d", ctx.getDataSaida().getDayOfMonth()) + "/"

@@ -75,10 +75,20 @@ public class ADMItemQuartoController {
             return;
         }
         // Atualizar texto dos campos com base no objeto quarto.
-        numeroQuarto.setText(String.valueOf(quarto.getNumero()));
-        numeroCamasDeCasal.setText("Camas de Casal: " + quarto.getQntdCamasCasal());
-        numeroCamasDeSolteiro.setText("Camas de Solteiro: " + quarto.getQntdCamasSolteiro());
-        precoEstadia.setText("R$" + quarto.getDiaria());
+
+        /*
+         * numeroQuarto.setText(String.valueOf(quarto.getNumero()));
+         * numeroCamasDeCasal.setText("Camas de Casal: " + quarto.getQntdCamasCasal());
+         * numeroCamasDeSolteiro.setText("Camas de Solteiro: " +
+         * quarto.getQntdCamasSolteiro()); precoEstadia.setText("R$" +
+         * quarto.getDiaria());
+         */
+
+        numeroQuarto.setText("Quarto " + String.format("%03d", quarto.getNumero()));
+        precoEstadia.setText("R$" + String.format("%.2f", quarto.getDiaria()).replace(".", ","));
+        numeroCamasDeCasal.setText("Camas de Casal: " + String.format("%02d", quarto.getQntdCamasCasal()));
+        numeroCamasDeSolteiro.setText("Camas de Solteiro: " + String.format("%02d", quarto.getQntdCamasSolteiro()));
+
         textoDisponibilidade.setText(quarto.getDisponivel() ? "Disponível" : "Indisponível");
         if (!quarto.getDisponivel()) {
             textoDisponibilidade.getStyleClass().add("unavailable");

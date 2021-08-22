@@ -73,7 +73,7 @@ public class ADMItemReservaController {
         }
         // Atualizar texto dos campos com base no objeto reserva.
         codigoReserva.setText("#" + reserva.getId());
-        precoTotal.setText("R$" + reserva.calcularPrecoTotal());
+        precoTotal.setText("R$" + String.format("%.2f", reserva.calcularPrecoTotal()).replace(".", ","));
         textoEmProgresso.setText(reserva.getConcluida() ? "Concluida" : "Em progresso");
         if (reserva.getConcluida()) {
             textoEmProgresso.getStyleClass().add("unavailable");
