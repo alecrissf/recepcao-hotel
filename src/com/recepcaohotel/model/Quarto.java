@@ -1,6 +1,8 @@
 package com.recepcaohotel.model;
 
-public class Quarto {
+import java.io.Serializable;
+
+public class Quarto implements Serializable {
 
     private int numero;
     private int qntdCamasCasal;

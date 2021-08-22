@@ -6,11 +6,14 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import com.recepcaohotel.model.utils.Permanencia;
+
 public class Sistema {
     // Constantes dos nomes dos arquivos.
-    public final String ARQ_QUARTOS = "quartos.csv";
-    public final String ARQ_RESERVAS = "reservas.csv";
-    public final String ARQ_USUARIOS = "usuarioa.csv";
+    public static final String CAMINHO_PADRAO = "./";
+    public static final String ARQ_QUARTOS = "quartos.csv";
+    public static final String ARQ_RESERVAS = "reservas.csv";
+    public static final String ARQ_USUARIOS = "usuarioa.csv";
 
     // Quartos serão dicionários de numeroQuarto - Quarto
     private Map<Integer, Quarto> quartos;
@@ -25,6 +28,9 @@ public class Sistema {
         this.quartos = new HashMap<>();
         this.reservas = new HashMap<>();
         this.usuarios = new HashMap<>();
+
+        Admin adm = new Admin("admin", "123456");
+        this.usuarios.put(adm.getNomeUsuario(), adm);
 
         // Pegar informações de arquivos para preencher as listas.
         this.recuperarDados();
@@ -129,26 +135,29 @@ public class Sistema {
     }
 
     public void recuperarDados() {
-        // TODO: Lógica para recuperar os dados dos arquivos salvos.
+        this.recuperarQuartos();
+        this.recuperarReservas();
     }
 
     private void recuperarQuartos() {
+        this.quartos = Permanencia.recuperarDados(CAMINHO_PADRAO + ARQ_QUARTOS);
     }
 
     private void recuperarReservas() {
-    }
-
-    private void recuperarUsuarios() {
+        this.reservas = Permanencia.recuperarDados(CAMINHO_PADRAO + ARQ_RESERVAS);
     }
 
     public void salvarDados() {
-        // TODO: Lógica para salvar os dados em arquivos.
+        this.salvarQuartos();
+        this.salvarReservas();
     }
 
     private void salvarQuartos() {
+        Permanencia.salvarDados(CAMINHO_PADRAO + ARQ_QUARTOS, this.quartos);
     }
 
     private void salvarReservas() {
+        Permanencia.salvarDados(CAMINHO_PADRAO + ARQ_RESERVAS, this.reservas);
     }
 
     // Método apenas para testar todos os dados armazenados como Quartos

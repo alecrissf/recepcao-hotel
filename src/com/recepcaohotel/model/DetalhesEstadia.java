@@ -1,6 +1,8 @@
 package com.recepcaohotel.model;
 
-public class DetalhesEstadia {
+import java.io.Serializable;
+
+public class DetalhesEstadia implements Serializable {
     private float servicoDeQuarto;
     private float frigobar;
 
