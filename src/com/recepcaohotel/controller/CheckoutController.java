@@ -35,6 +35,12 @@ public class CheckoutController {
             if (r == null) {
                 mostrarErroCampos("Tente novamente, ou dirija-se a recepção.");
                 return;
+            } else if (r.getCancelada()) {
+                mostrarErroCampos("Esta reserva foi cancelada.");
+                return;
+            } else if (r.getConcluida()) {
+                mostrarErroCampos("Esta reserva já foi concluída.");
+                return;
             }
         } catch (NumberFormatException e) {
             mostrarErroCampos("O código da reserva é composto apenas por números.");
