@@ -10,6 +10,7 @@
   <VBox alignment="center_left" HBox.hgrow="never">
     <Label text="Reserva" styleClass="text" />
     <Label fx:id="codigoReserva" text="#13OAP002" styleClass="text-code" />
+    <Label fx:id="quarto" styleClass="text-names" alignment="center" maxWidth="200" />
   </VBox>
    <VBox alignment="center" HBox.hgrow="always">
     <Label text="Cliente" styleClass="text" />

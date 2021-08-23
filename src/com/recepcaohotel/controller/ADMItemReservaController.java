@@ -18,6 +18,9 @@ public class ADMItemReservaController {
     private Reserva reserva = null;
 
     @FXML
+    private Label quarto;
+
+    @FXML
     private Label codigoReserva;
 
     @FXML
@@ -81,6 +84,7 @@ public class ADMItemReservaController {
             return;
         }
         // Atualizar texto dos campos com base no objeto reserva.
+        quarto.setText("Quarto " + String.format("%03d", reserva.getQuarto().getNumero()));
         codigoReserva.setText("#" + reserva.getId());
         precoTotal.setText("R$" + String.format("%.2f", reserva.calcularPrecoTotal()).replace(".", ","));
         nomeUsuario.setText(reserva.getCliente().getNome());
