@@ -73,16 +73,20 @@ public class ADMEditarReservaController {
 
         // Testar a nova data de saída e colocar o valor de campo data saida na reserva.
         if (campoDataSaida.getValue().isBefore(LocalDate.now())) {
-            mostrarErroCampos("A 'Data de Saída' anterior a 'Data de Hoje'.");
+            mostrarErroCampos("'Data de Saída' anterior a 'Data de Hoje'.");
             return;
         }
 
         if (campoDataSaida.getValue().isBefore(reserva.getDataEntrada())) {
-            mostrarErroCampos("A 'Data de Saída' anterior a 'Data de Entrada'.'");
+            mostrarErroCampos("'Data de Saída' anterior a 'Data de Entrada'.'");
             return;
         }
 
         for (Reserva reservaSalvas : reservas) {
+            // Não testar com a data da própria reserva
+            if (reservaSalvas.getId() == reserva.getId()) {
+                continue;
+            }
             if (reserva.getQuarto() == reservaSalvas.getQuarto()
                     && campoDataSaida.getValue().isAfter(reservaSalvas.getDataEntrada())) {
                 mostrarErroCampos("A nova 'Data de Saída' está indiponível.'");
@@ -104,7 +108,7 @@ public class ADMEditarReservaController {
                 return;
             }
         } else if (!(qtdServicoQuarto.isBlank() && valorServicoQuarto.isBlank())) {
-            mostrarErroCampos("Ambos os campos de \"Serviço de Quarto\" devem estar preenchidos.");
+            mostrarErroCampos("Preencha ambos os campos de \"Serviço de Quarto\".");
             return;
         }
 
@@ -119,7 +123,7 @@ public class ADMEditarReservaController {
             }
             // TODO: Verificar o tamanho do texto na caixa de mensagem
         } else if (!(qtdConsumoFrigobar.isBlank() && valorConsumoFrigobar.isBlank())) {
-            mostrarErroCampos("Ambos os campos de \"Consumo Frigobar\" devem estar preenchidos.");
+            mostrarErroCampos("Preencha ambos os campos de \"Consumo Frigobar\".");
             return;
         }
 
